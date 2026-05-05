@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "inverse-primary": "#7f5600",
+                      "primary-fixed-dim": "#ffba3f",
+                      "on-secondary": "#3c2f00",
+                      "surface-bright": "#343941",
+                      "on-secondary-fixed": "#241a00",
+                      "secondary-fixed": "#ffe088",
+                      "on-primary-fixed": "#281800",
+                      "on-error-container": "#ffdad6",
+                      "on-tertiary": "#2e3037",
+                      "tertiary-fixed-dim": "#c4c6cf",
+                      "surface-container-low": "#171c23",
+                      "on-surface": "#dee2ec",
+                      "on-primary-container": "#6a4700",
+                      "tertiary-fixed": "#e1e2eb",
+                      "surface-container": "#1b2027",
+                      "primary": "#ffd698",
+                      "on-background": "#dee2ec",
+                      "on-tertiary-fixed-variant": "#44474e",
+                      "on-primary-fixed-variant": "#604100",
+                      "outline-variant": "#514533",
+                      "error": "#ffb4ab",
+                      "surface": "#0f141b",
+                      "background": "#0f141b",
+                      "outline": "#9f8e78",
+                      "inverse-surface": "#dee2ec",
+                      "surface-variant": "#30353d",
+                      "secondary-container": "#af8d11",
+                      "on-secondary-fixed-variant": "#574500",
+                      "primary-container": "#ffb100",
+                      "on-error": "#690005",
+                      "secondary-fixed-dim": "#e9c349",
+                      "on-secondary-container": "#342800",
+                      "on-tertiary-container": "#4c4e56",
+                      "tertiary-container": "#bec0c9",
+                      "tertiary": "#dadce5",
+                      "primary-fixed": "#ffdeae",
+                      "surface-container-high": "#252a32",
+                      "inverse-on-surface": "#2c3138",
+                      "on-primary": "#432c00",
+                      "surface-tint": "#ffba3f",
+                      "surface-dim": "#0f141b",
+                      "error-container": "#93000a",
+                      "on-surface-variant": "#d6c4ac",
+                      "on-tertiary-fixed": "#191c22",
+                      "surface-container-highest": "#30353d",
+                      "secondary": "#e9c349",
+                      "surface-container-lowest": "#090f15"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "component-gap": "16px",
+                      "stack-md": "12px",
+                      "stack-lg": "24px",
+                      "container-padding": "32px",
+                      "gutter": "24px",
+                      "unit": "8px",
+                      "stack-sm": "4px"
+              },
+              "fontFamily": {
+                      "display-lg": ["Inter"],
+                      "body-base": ["Inter"],
+                      "label-caps": ["JetBrains Mono"],
+                      "data-mono": ["JetBrains Mono"],
+                      "headline-md": ["Inter"]
+              },
+              "fontSize": {
+                      "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "body-base": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "label-caps": ["11px", {"lineHeight": "1", "letterSpacing": "0.1em", "fontWeight": "700"}],
+                      "data-mono": ["14px", {"lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                      "headline-md": ["24px", {"lineHeight": "1.2", "fontWeight": "600"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .hive-gradient {
+            background: radial-gradient(circle at top left, rgba(255, 177, 0, 0.08), transparent);
+        }
+        .glass-panel {
+            backdrop-filter: blur(12px);
+            background: rgba(22, 27, 34, 0.7);
+        }
+        .hex-pattern {
+            background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 0l17.32 10v20L20 40 2.68 30V10z' fill='none' stroke='%23ffb100' stroke-opacity='0.03'/%3E%3C/svg%3E");
+        }
+    </style>
+</head>
+<body class="bg-background font-body-base text-on-surface flex min-h-screen">
+<!-- SideNavBar Shell -->
+<aside class="hidden md:flex flex-col h-screen sticky left-0 w-64 border-r border-slate-800/60 bg-slate-950/90 backdrop-blur-xl p-4 space-y-2 z-40">
+<div class="flex flex-col px-2 py-4 mb-6">
+<span class="text-lg font-black text-amber-500 uppercase tracking-widest">Boost Hive</span>
+<span class="text-[10px] font-medium text-slate-500 tracking-widest uppercase">Elite SMM Command</span>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 text-slate-500 bg-transparent hover:bg-slate-900/80 hover:text-amber-200 transition-all duration-300 ease-in-out rounded-lg group" href="#">
+<span class="material-symbols-outlined text-lg" data-icon="hub">hub</span>
+<span class="text-sm font-sans antialiased">Services</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-500 bg-transparent hover:bg-slate-900/80 hover:text-amber-200 transition-all duration-300 ease-in-out rounded-lg" href="#">
+<span class="material-symbols-outlined text-lg" data-icon="shopping_cart">shopping_cart</span>
+<span class="text-sm font-sans antialiased">Orders</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-amber-500 bg-amber-500/10 border-r-2 border-amber-500 transition-all duration-300 ease-in-out rounded-lg" href="#">
+<span class="material-symbols-outlined text-lg" data-icon="account_balance_wallet" style="font-variation-settings: 'FILL' 1;">account_balance_wallet</span>
+<span class="text-sm font-sans antialiased">Wallet</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-500 bg-transparent hover:bg-slate-900/80 hover:text-amber-200 transition-all duration-300 ease-in-out rounded-lg" href="#">
+<span class="material-symbols-outlined text-lg" data-icon="code">code</span>
+<span class="text-sm font-sans antialiased">API</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-500 bg-transparent hover:bg-slate-900/80 hover:text-amber-200 transition-all duration-300 ease-in-out rounded-lg" href="#">
+<span class="material-symbols-outlined text-lg" data-icon="bar_chart">bar_chart</span>
+<span class="text-sm font-sans antialiased">Statistics</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-500 bg-transparent hover:bg-slate-900/80 hover:text-amber-200 transition-all duration-300 ease-in-out rounded-lg" href="#">
+<span class="material-symbols-outlined text-lg" data-icon="shield_person">shield_person</span>
+<span class="text-sm font-sans antialiased">Admin Tools</span>
+</a>
+</nav>
+<div class="pt-4 border-t border-slate-800/60 mt-auto">
+<a class="flex items-center gap-3 px-3 py-2 text-slate-500 bg-transparent hover:bg-slate-900/80 hover:text-amber-200 transition-all duration-300 ease-in-out rounded-lg" href="#">
+<span class="material-symbols-outlined text-lg" data-icon="logout">logout</span>
+<span class="text-sm font-sans antialiased">Logout</span>
+</a>
+</div>
+</aside>
+<div class="flex-1 flex flex-col min-w-0">
+<!-- TopNavBar Shell -->
+<header class="bg-slate-950/80 backdrop-blur-md border-b border-slate-800/50 shadow-[0_0_15px_rgba(255,177,0,0.05)] sticky top-0 z-50 px-6 py-3 flex justify-between items-center w-full">
+<div class="flex items-center gap-8">
+<span class="text-xl font-bold tracking-tighter text-amber-500 italic md:hidden">Boost Hive</span>
+<nav class="hidden lg:flex items-center space-x-6">
+<a class="text-slate-400 font-sans text-sm font-medium tracking-tight hover:text-amber-400 transition-colors" href="#">Dashboard</a>
+<a class="text-slate-400 font-sans text-sm font-medium tracking-tight hover:text-amber-400 transition-colors" href="#">Marketplace</a>
+<a class="text-slate-400 font-sans text-sm font-medium tracking-tight hover:text-amber-400 transition-colors" href="#">Support</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden sm:flex flex-col items-end mr-2">
+<span class="text-[10px] text-slate-500 font-bold uppercase tracking-tighter">Current Balance</span>
+<span class="text-sm font-data-mono text-amber-500">$1,240.50</span>
+</div>
+<button class="bg-primary-container text-on-primary-container px-4 py-1.5 rounded text-sm font-label-caps active:scale-95 transition-all duration-100">Add Funds</button>
+<div class="flex items-center gap-2 border-l border-slate-800/50 pl-4">
+<span class="material-symbols-outlined text-slate-400 hover:text-amber-400 cursor-pointer" data-icon="notifications">notifications</span>
+<span class="material-symbols-outlined text-slate-400 hover:text-amber-400 cursor-pointer" data-icon="settings">settings</span>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="p-component-gap lg:p-container-padding flex-1 hex-pattern">
+<div class="max-w-7xl mx-auto">
+<div class="mb-stack-lg">
+<h1 class="font-display-lg text-display-lg text-on-surface">Deposit Funds</h1>
+<p class="text-on-surface-variant font-body-base max-w-2xl">Fuel your account and scale your social influence. Select your preferred high-security payment gateway below.</p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Left: Payment Configuration -->
+<div class="lg:col-span-7 space-y-gutter">
+<!-- Method Selection Bento -->
+<div class="grid grid-cols-2 sm:grid-cols-3 gap-stack-md">
+<button class="flex flex-col items-center justify-center p-stack-lg bg-surface-container-high border border-amber-500 shadow-[0_0_15px_rgba(255,177,0,0.1)] rounded-xl transition-all">
+<span class="material-symbols-outlined text-3xl text-amber-500 mb-2" data-icon="currency_bitcoin">currency_bitcoin</span>
+<span class="font-label-caps text-on-surface">Crypto</span>
+<span class="text-[9px] text-amber-500/60 uppercase">Instant + 5% Bonus</span>
+</button>
+<button class="flex flex-col items-center justify-center p-stack-lg bg-surface-container border border-outline-variant hover:border-amber-500/50 rounded-xl transition-all group">
+<span class="material-symbols-outlined text-3xl text-on-surface-variant group-hover:text-amber-400 mb-2" data-icon="credit_card">credit_card</span>
+<span class="font-label-caps text-on-surface">Card</span>
+<span class="text-[9px] text-slate-500 uppercase">Visa / Master</span>
+</button>
+<button class="flex flex-col items-center justify-center p-stack-lg bg-surface-container border border-outline-variant hover:border-amber-500/50 rounded-xl transition-all group">
+<span class="material-symbols-outlined text-3xl text-on-surface-variant group-hover:text-amber-400 mb-2" data-icon="account_balance">account_balance</span>
+<span class="font-label-caps text-on-surface">Bank</span>
+<span class="text-[9px] text-slate-500 uppercase">Wire / SEPA</span>
+</button>
+</div>
+<!-- Amount Input Glass Card -->
+<div class="glass-panel border border-outline-variant rounded-xl p-stack-lg space-y-stack-lg relative overflow-hidden">
+<div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-amber-500/0 via-amber-500/40 to-amber-500/0"></div>
+<div>
+<label class="font-label-caps text-amber-500 block mb-2">Deposit Amount (USD)</label>
+<div class="relative">
+<span class="absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant font-data-mono">$</span>
+<input class="w-full bg-surface-container-lowest border border-outline-variant focus:border-primary-container focus:ring-1 focus:ring-primary-container rounded-lg py-4 pl-8 pr-4 text-display-lg font-display-lg text-on-surface outline-none transition-all" placeholder="0.00" type="number"/>
+</div>
+</div>
+<div class="grid grid-cols-4 gap-2">
+<button class="py-2 border border-outline-variant rounded font-data-mono text-sm hover:bg-amber-500/10 hover:text-amber-500 transition-colors">$50</button>
+<button class="py-2 border border-outline-variant rounded font-data-mono text-sm hover:bg-amber-500/10 hover:text-amber-500 transition-colors">$100</button>
+<button class="py-2 border border-outline-variant rounded font-data-mono text-sm hover:bg-amber-500/10 hover:text-amber-500 transition-colors">$500</button>
+<button class="py-2 border border-outline-variant rounded font-data-mono text-sm hover:bg-amber-500/10 hover:text-amber-500 transition-colors">$1000</button>
+</div>
+<div class="p-stack-md bg-amber-500/5 rounded-lg border border-amber-500/10 flex items-start gap-3">
+<span class="material-symbols-outlined text-amber-500 mt-0.5" data-icon="info">info</span>
+<div class="text-xs text-on-surface-variant leading-relaxed">
+                                    Funds are typically credited to your <span class="text-amber-500">Boost Hive</span> wallet within 10-15 minutes after blockchain confirmation. A processing fee of 0.5% applies to this transaction.
+                                </div>
+</div>
+<button class="w-full py-4 bg-primary-container text-on-primary-container font-label-caps text-lg rounded-xl shadow-[0_4px_20px_rgba(255,177,0,0.2)] active:scale-95 transition-all flex items-center justify-center gap-2">
+                                Proceed to Payment
+                                <span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Right: Summary & History -->
+<div class="lg:col-span-5 space-y-gutter">
+<!-- Security Status Card -->
+<div class="bg-surface-container border border-outline-variant rounded-xl p-stack-lg flex items-center gap-4">
+<div class="h-12 w-12 rounded-full bg-green-500/10 flex items-center justify-center text-green-500">
+<span class="material-symbols-outlined" data-icon="verified_user">verified_user</span>
+</div>
+<div>
+<h3 class="font-headline-md text-on-surface">Secure Gateway</h3>
+<p class="text-xs text-on-surface-variant">Encrypted by Advanced Hive Node Protocol. Your assets are 100% SAFU.</p>
+</div>
+</div>
+<!-- Visual Anchor -->
+<div class="relative h-48 rounded-xl overflow-hidden border border-outline-variant group">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="A macro close-up of a high-tech gold and obsidian circuit board designed to resemble a digital honeycomb pattern. Deep shadows and glowing amber traces create a sense of advanced financial infrastructure. The lighting is cinematic with sharp highlights on metallic edges, reflecting a luxury fintech aesthetic for elite social media management. The overall mood is powerful, silent, and impeccably organized." src="https://lh3.googleusercontent.com/aida/ADBb0uivY-LdkYivpV00B432ZYc9lCQEpXI8HqNrG-HgaOKg-B7ebmhslkPWayraV3CNJ7oI9iTWC4_Z7BbhkSpM2sGCXZHbXXk10VL8j4W8V64rViiQ6hckjCRm-bkVinmYhb_NRzD11Uf7f0gQ5nW_0tVNMUAYcqa72Y9-BBfQXIvPPdRh1l83OsZthZe-wTmDQmi8XqQIvrtC3RGI98wYCNjxE9NZGLXbtugiwF0rSp72NHs3wMq7eW3AFARt"/>
+<div class="absolute inset-0 bg-gradient-to-t from-slate-950 to-transparent"></div>
+<div class="absolute bottom-4 left-4">
+<span class="font-label-caps text-amber-500 text-[10px]">Command Center v4.2</span>
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
+<span class="text-xs font-data-mono text-on-surface">Gateway Nodes Active</span>
+</div>
+</div>
+</div>
+<!-- Transaction History Section -->
+<div class="space-y-stack-md">
+<div class="flex items-center justify-between">
+<h3 class="font-label-caps text-slate-500">Recent Transactions</h3>
+<a class="text-[10px] text-amber-500 hover:underline" href="#">View All</a>
+</div>
+<div class="space-y-2">
+<!-- History Item -->
+<div class="bg-surface-container-low border border-outline-variant/30 rounded-lg p-3 flex items-center justify-between group hover:bg-surface-container transition-colors">
+<div class="flex items-center gap-3">
+<div class="h-8 w-8 rounded bg-slate-900 flex items-center justify-center text-amber-500">
+<span class="material-symbols-outlined text-base" data-icon="currency_bitcoin">currency_bitcoin</span>
+</div>
+<div>
+<div class="text-xs font-bold text-on-surface">Crypto Deposit</div>
+<div class="text-[10px] text-slate-500">24 Oct, 2024 • 14:22</div>
+</div>
+</div>
+<div class="text-right">
+<div class="text-xs font-data-mono text-amber-500">+$250.00</div>
+<div class="text-[9px] text-green-500 uppercase font-bold tracking-tighter">Completed</div>
+</div>
+</div>
+<!-- History Item -->
+<div class="bg-surface-container-low border border-outline-variant/30 rounded-lg p-3 flex items-center justify-between group hover:bg-surface-container transition-colors">
+<div class="flex items-center gap-3">
+<div class="h-8 w-8 rounded bg-slate-900 flex items-center justify-center text-slate-400">
+<span class="material-symbols-outlined text-base" data-icon="credit_card">credit_card</span>
+</div>
+<div>
+<div class="text-xs font-bold text-on-surface">Card Refill</div>
+<div class="text-[10px] text-slate-500">22 Oct, 2024 • 09:15</div>
+</div>
+</div>
+<div class="text-right">
+<div class="text-xs font-data-mono text-on-surface">+$50.00</div>
+<div class="text-[9px] text-green-500 uppercase font-bold tracking-tighter">Completed</div>
+</div>
+</div>
+<!-- History Item -->
+<div class="bg-surface-container-low border border-outline-variant/30 rounded-lg p-3 flex items-center justify-between group hover:bg-surface-container transition-colors opacity-60">
+<div class="flex items-center gap-3">
+<div class="h-8 w-8 rounded bg-slate-900 flex items-center justify-center text-slate-500">
+<span class="material-symbols-outlined text-base" data-icon="history">history</span>
+</div>
+<div>
+<div class="text-xs font-bold text-on-surface">Wallet Sweep</div>
+<div class="text-[10px] text-slate-500">18 Oct, 2024 • 22:45</div>
+</div>
+</div>
+<div class="text-right">
+<div class="text-xs font-data-mono text-on-surface-variant">-$12.00</div>
+<div class="text-[9px] text-slate-500 uppercase font-bold tracking-tighter">Tax Adj.</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer Shell -->
+<footer class="bg-slate-950 border-t border-slate-900 w-full py-8 mt-auto">
+<div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center px-8">
+<div class="flex items-center gap-4 mb-4 md:mb-0">
+<span class="text-amber-500/50 font-semibold">Boost Hive</span>
+<p class="text-xs font-light tracking-wide text-slate-500">© 2024 Boost Hive Elite SMM. All rights reserved.</p>
+</div>
+<nav class="flex gap-6">
+<a class="text-slate-600 hover:text-amber-400 text-xs font-light tracking-wide transition-colors" href="#">Terms of Service</a>
+<a class="text-slate-600 hover:text-amber-400 text-xs font-light tracking-wide transition-colors" href="#">Privacy Policy</a>
+<a class="text-slate-600 hover:text-amber-400 text-xs font-light tracking-wide transition-colors" href="#">Refunds</a>
+<a class="text-slate-600 hover:text-amber-400 text-xs font-light tracking-wide transition-colors" href="#">API Documentation</a>
+</nav>
+</div>
+</footer>
+</div>
+<!-- BottomNavBar Shell (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 w-full z-[60] rounded-t-2xl bg-slate-950/95 backdrop-blur-lg border-t border-slate-800 shadow-[0_-5px_20px_rgba(0,0,0,0.8)] flex justify-around items-center px-4 py-3 tap-highlight-transparent">
+<a class="flex flex-col items-center justify-center text-slate-500" href="#">
+<span class="material-symbols-outlined text-xl" data-icon="home">home</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-500" href="#">
+<span class="material-symbols-outlined text-xl" data-icon="grid_view">grid_view</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter mt-1">Services</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-500" href="#">
+<span class="material-symbols-outlined text-xl" data-icon="receipt_long">receipt_long</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter mt-1">Orders</span>
+</a>
+<a class="flex flex-col items-center justify-center text-amber-500 bg-amber-500/5 rounded-xl py-1 px-3" href="#">
+<span class="material-symbols-outlined text-xl" data-icon="wallet" style="font-variation-settings: 'FILL' 1;">wallet</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter mt-1">Wallet</span>
+</a>
+</nav>
+</body></html>

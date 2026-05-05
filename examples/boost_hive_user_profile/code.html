@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Boost Hive | Profile &amp; Settings</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #0f141b;
+            color: #dee2ec;
+        }
+        .hive-gradient {
+            background: linear-gradient(135deg, rgba(255, 177, 0, 0.05) 0%, rgba(15, 20, 27, 0) 100%);
+        }
+        .glass-panel {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-primary": "#7f5600",
+                        "primary-fixed-dim": "#ffba3f",
+                        "on-secondary": "#3c2f00",
+                        "surface-bright": "#343941",
+                        "on-secondary-fixed": "#241a00",
+                        "secondary-fixed": "#ffe088",
+                        "on-primary-fixed": "#281800",
+                        "on-error-container": "#ffdad6",
+                        "on-tertiary": "#2e3037",
+                        "tertiary-fixed-dim": "#c4c6cf",
+                        "surface-container-low": "#171c23",
+                        "on-surface": "#dee2ec",
+                        "on-primary-container": "#6a4700",
+                        "tertiary-fixed": "#e1e2eb",
+                        "surface-container": "#1b2027",
+                        "primary": "#ffd698",
+                        "on-background": "#dee2ec",
+                        "on-tertiary-fixed-variant": "#44474e",
+                        "on-primary-fixed-variant": "#604100",
+                        "outline-variant": "#514533",
+                        "error": "#ffb4ab",
+                        "surface": "#0f141b",
+                        "background": "#0f141b",
+                        "outline": "#9f8e78",
+                        "inverse-surface": "#dee2ec",
+                        "surface-variant": "#30353d",
+                        "secondary-container": "#af8d11",
+                        "on-secondary-fixed-variant": "#574500",
+                        "primary-container": "#ffb100",
+                        "on-error": "#690005",
+                        "secondary-fixed-dim": "#e9c349",
+                        "on-secondary-container": "#342800",
+                        "on-tertiary-container": "#4c4e56",
+                        "tertiary-container": "#bec0c9",
+                        "tertiary": "#dadce5",
+                        "primary-fixed": "#ffdeae",
+                        "surface-container-high": "#252a32",
+                        "inverse-on-surface": "#2c3138",
+                        "on-primary": "#432c00",
+                        "surface-tint": "#ffba3f",
+                        "surface-dim": "#0f141b",
+                        "error-container": "#93000a",
+                        "on-surface-variant": "#d6c4ac",
+                        "on-tertiary-fixed": "#191c22",
+                        "surface-container-highest": "#30353d",
+                        "secondary": "#e9c349",
+                        "surface-container-lowest": "#090f15"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Inter"],
+                        "body-base": ["Inter"],
+                        "label-caps": ["JetBrains Mono"],
+                        "data-mono": ["JetBrains Mono"],
+                        "headline-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-base": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "label-caps": ["11px", {"lineHeight": "1", "letterSpacing": "0.1em", "fontWeight": "700"}],
+                        "data-mono": ["14px", {"lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "headline-md": ["24px", {"lineHeight": "1.2", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="font-body-base text-on-surface min-h-screen flex">
+<!-- Side Navigation Shell -->
+<aside class="hidden md:flex flex-col h-screen sticky left-0 w-64 border-r bg-slate-950/90 backdrop-blur-xl border-slate-800/60 shadow-2xl shadow-black p-4 space-y-2 z-50">
+<div class="flex items-center space-x-3 mb-8 px-2">
+<div class="w-10 h-10 rounded-lg bg-primary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary-container" style="font-variation-settings: 'FILL' 1;">hub</span>
+</div>
+<div>
+<h1 class="text-lg font-black text-amber-500 uppercase tracking-widest leading-none">Boost Hive</h1>
+<p class="text-[10px] text-slate-500 uppercase tracking-tighter">Elite SMM Command</p>
+</div>
+</div>
+<button class="w-full py-3 mb-6 bg-primary-container text-on-primary-container font-label-caps text-label-caps rounded-lg hover:shadow-[0_0_15px_rgba(255,177,0,0.3)] transition-all active:scale-95">
+            New Order
+        </button>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center space-x-3 px-3 py-2 text-slate-500 bg-transparent rounded-lg hover:bg-slate-900/80 hover:text-amber-200 transition-all duration-300" href="#">
+<span class="material-symbols-outlined">grid_view</span>
+<span class="text-sm font-medium">Services</span>
+</a>
+<a class="flex items-center space-x-3 px-3 py-2 text-slate-500 bg-transparent rounded-lg hover:bg-slate-900/80 hover:text-amber-200 transition-all duration-300" href="#">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="text-sm font-medium">Orders</span>
+</a>
+<a class="flex items-center space-x-3 px-3 py-2 text-slate-500 bg-transparent rounded-lg hover:bg-slate-900/80 hover:text-amber-200 transition-all duration-300" href="#">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+<span class="text-sm font-medium">Wallet</span>
+</a>
+<a class="flex items-center space-x-3 px-3 py-2 text-slate-500 bg-transparent rounded-lg hover:bg-slate-900/80 hover:text-amber-200 transition-all duration-300" href="#">
+<span class="material-symbols-outlined">code</span>
+<span class="text-sm font-medium">API</span>
+</a>
+<a class="flex items-center space-x-3 px-3 py-2 text-slate-500 bg-transparent rounded-lg hover:bg-slate-900/80 hover:text-amber-200 transition-all duration-300" href="#">
+<span class="material-symbols-outlined">bar_chart</span>
+<span class="text-sm font-medium">Statistics</span>
+</a>
+<a class="flex items-center space-x-3 px-3 py-2 text-amber-500 bg-amber-500/10 border-r-2 border-amber-500 rounded-l-lg transition-all duration-300" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">shield_person</span>
+<span class="text-sm font-medium">Admin Tools</span>
+</a>
+</nav>
+<div class="mt-auto pt-4 border-t border-slate-800/60">
+<a class="flex items-center space-x-3 px-3 py-2 text-slate-500 bg-transparent rounded-lg hover:bg-slate-900/80 hover:text-amber-200 transition-all duration-300" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="text-sm font-medium">Logout</span>
+</a>
+</div>
+</aside>
+<div class="flex-1 flex flex-col min-h-screen">
+<!-- Top Nav Bar Shell -->
+<header class="sticky top-0 z-50 flex justify-between items-center w-full px-6 py-3 bg-slate-950/80 backdrop-blur-md border-b border-slate-800/50 shadow-[0_0_15px_rgba(255,177,0,0.05)]">
+<div class="flex items-center space-x-8">
+<div class="md:hidden">
+<span class="text-xl font-bold tracking-tighter text-amber-500 italic">Boost Hive</span>
+</div>
+<nav class="hidden md:flex items-center space-x-6">
+<a class="text-slate-400 font-sans text-sm font-medium tracking-tight hover:text-amber-400 transition-colors" href="#">Dashboard</a>
+<a class="text-slate-400 font-sans text-sm font-medium tracking-tight hover:text-amber-400 transition-colors" href="#">Marketplace</a>
+<a class="text-slate-400 font-sans text-sm font-medium tracking-tight hover:text-amber-400 transition-colors" href="#">Support</a>
+</nav>
+</div>
+<div class="flex items-center space-x-4">
+<div class="hidden sm:flex items-center space-x-3">
+<span class="text-slate-200 font-data-mono text-data-mono">$1,240.50</span>
+<button class="bg-primary-container px-4 py-1.5 rounded-lg text-on-primary-container font-label-caps text-label-caps hover:bg-primary transition-colors">
+                        Add Funds
+                    </button>
+</div>
+<div class="flex items-center space-x-2 text-slate-400">
+<button class="p-2 hover:text-amber-400 transition-colors"><span class="material-symbols-outlined">notifications</span></button>
+<button class="p-2 hover:text-amber-400 transition-colors"><span class="material-symbols-outlined">settings</span></button>
+</div>
+<img alt="User Profile" class="w-8 h-8 rounded-full border border-amber-500/30 object-cover" data-alt="A professional close-up of a high-tech user profile avatar set against a deep obsidian background with subtle golden hexagonal light reflections. The avatar features sharp, clean lines and a modern digital aesthetic, illuminated by a soft, warm amber glow from the side. The overall mood is elite, technical, and high-performance, fitting for a sophisticated social media command center UI." src="https://lh3.googleusercontent.com/aida/ADBb0uivY-LdkYivpV00B432ZYc9lCQEpXI8HqNrG-HgaOKg-B7ebmhslkPWayraV3CNJ7oI9iTWC4_Z7BbhkSpM2sGCXZHbXXk10VL8j4W8V64rViiQ6hckjCRm-bkVinmYhb_NRzD11Uf7f0gQ5nW_0tVNMUAYcqa72Y9-BBfQXIvPPdRh1l83OsZthZe-wTmDQmi8XqQIvrtC3RGI98wYCNjxE9NZGLXbtugiwF0rSp72NHs3wMq7eW3AFARt"/>
+</div>
+</header>
+<main class="flex-1 p-6 md:p-8 space-y-8 max-w-7xl mx-auto w-full">
+<!-- Profile Hero Section -->
+<section class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<div class="lg:col-span-2 p-8 rounded-xl bg-surface-container-low border border-outline-variant/30 hive-gradient relative overflow-hidden flex flex-col md:flex-row items-center md:items-start gap-8">
+<div class="relative">
+<div class="w-32 h-32 rounded-2xl overflow-hidden border-2 border-primary-container shadow-[0_0_20px_rgba(255,177,0,0.2)]">
+<img alt="Large Profile" class="w-full h-full object-cover" data-alt="Close up of a premium user profile icon featuring a sleek, modern digital character design in an elite tech setting. The color palette is dominated by deep blacks and warm amber accents, with subtle glass-like reflections on the character's visor. High contrast lighting creates a dramatic, professional atmosphere within the dark-themed command interface." src="https://lh3.googleusercontent.com/aida/ADBb0uivY-LdkYivpV00B432ZYc9lCQEpXI8HqNrG-HgaOKg-B7ebmhslkPWayraV3CNJ7oI9iTWC4_Z7BbhkSpM2sGCXZHbXXk10VL8j4W8V64rViiQ6hckjCRm-bkVinmYhb_NRzD11Uf7f0gQ5nW_0tVNMUAYcqa72Y9-BBfQXIvPPdRh1l83OsZthZe-wTmDQmi8XqQIvrtC3RGI98wYCNjxE9NZGLXbtugiwF0rSp72NHs3wMq7eW3AFARt"/>
+</div>
+<button class="absolute -bottom-2 -right-2 bg-primary-container p-2 rounded-lg text-on-primary-container shadow-lg hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-sm">photo_camera</span>
+</button>
+</div>
+<div class="flex-1 text-center md:text-left">
+<div class="flex flex-col md:flex-row md:items-center gap-2 md:gap-4 mb-2">
+<h2 class="font-headline-md text-headline-md text-primary">Alex "HiveMaster" Vance</h2>
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-label-caps bg-primary/10 text-primary border border-primary/20">
+                                PREMIUM TIER
+                            </span>
+</div>
+<p class="text-slate-400 mb-6 max-w-lg">Elite influencer network administrator and technical strategist. Managing 248 active campaigns with a 99.8% fulfillment rate.</p>
+<div class="grid grid-cols-3 gap-4">
+<div class="p-4 rounded-lg bg-surface-container border border-outline-variant/20">
+<p class="text-[10px] text-slate-500 font-label-caps mb-1 uppercase">Account Status</p>
+<p class="text-green-400 font-data-mono text-sm">Verified</p>
+</div>
+<div class="p-4 rounded-lg bg-surface-container border border-outline-variant/20">
+<p class="text-[10px] text-slate-500 font-label-caps mb-1 uppercase">Member Since</p>
+<p class="text-slate-200 font-data-mono text-sm">Oct 2022</p>
+</div>
+<div class="p-4 rounded-lg bg-surface-container border border-outline-variant/20">
+<p class="text-[10px] text-slate-500 font-label-caps mb-1 uppercase">Reputation</p>
+<p class="text-amber-500 font-data-mono text-sm">9,842 HP</p>
+</div>
+</div>
+</div>
+</div>
+<div class="p-8 rounded-xl bg-surface-container-low border border-outline-variant/30 flex flex-col justify-between">
+<div>
+<h3 class="font-headline-md text-lg text-slate-100 mb-2">Quick Stats</h3>
+<p class="text-sm text-slate-400 mb-6">Real-time performance metrics</p>
+<div class="space-y-4">
+<div class="flex items-center justify-between">
+<span class="text-sm text-slate-400">Monthly Spend</span>
+<span class="text-sm font-data-mono text-amber-500">$4,280.00</span>
+</div>
+<div class="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+<div class="bg-amber-500 h-full w-[65%] shadow-[0_0_10px_rgba(255,177,0,0.5)]"></div>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-sm text-slate-400">Orders Fulfilled</span>
+<span class="text-sm font-data-mono text-amber-500">1,204</span>
+</div>
+<div class="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+<div class="bg-amber-500 h-full w-[88%] shadow-[0_0_10px_rgba(255,177,0,0.5)]"></div>
+</div>
+</div>
+</div>
+<button class="w-full mt-8 py-3 bg-transparent border border-amber-500/50 text-amber-500 font-label-caps text-label-caps rounded-lg hover:bg-amber-500/10 transition-colors">
+                        View Detailed Report
+                    </button>
+</div>
+</section>
+<!-- Bento Grid Content -->
+<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- Account Settings -->
+<div class="p-6 rounded-xl bg-surface-container border border-outline-variant/20">
+<div class="flex items-center space-x-3 mb-6">
+<span class="material-symbols-outlined text-primary">person_outline</span>
+<h3 class="font-headline-md text-lg text-slate-100">Account Identity</h3>
+</div>
+<form class="space-y-4">
+<div>
+<label class="block text-[10px] font-label-caps text-slate-500 uppercase mb-1">Email Address</label>
+<input class="w-full bg-slate-950/50 border border-slate-800 rounded-lg px-4 py-2.5 text-sm focus:ring-1 focus:ring-amber-500 focus:border-amber-500 outline-none transition-all" type="email" value="alex.vance@hive-network.io"/>
+</div>
+<div>
+<label class="block text-[10px] font-label-caps text-slate-500 uppercase mb-1">Display Name</label>
+<input class="w-full bg-slate-950/50 border border-slate-800 rounded-lg px-4 py-2.5 text-sm focus:ring-1 focus:ring-amber-500 focus:border-amber-500 outline-none transition-all" type="text" value="HiveMaster"/>
+</div>
+<button class="text-primary font-label-caps text-[11px] hover:underline">Request Email Change</button>
+</form>
+</div>
+<!-- Security / 2FA -->
+<div class="p-6 rounded-xl bg-surface-container border border-outline-variant/20">
+<div class="flex items-center space-x-3 mb-6">
+<span class="material-symbols-outlined text-primary">verified_user</span>
+<h3 class="font-headline-md text-lg text-slate-100">Security Guard</h3>
+</div>
+<div class="space-y-6">
+<div class="flex items-center justify-between p-4 rounded-lg bg-slate-950/30 border border-slate-800">
+<div class="flex items-center space-x-3">
+<span class="material-symbols-outlined text-green-500">lock</span>
+<div>
+<p class="text-sm font-medium text-slate-200">2FA Status</p>
+<p class="text-[10px] text-slate-500">Mobile Authentication Enabled</p>
+</div>
+</div>
+<span class="inline-block w-3 h-3 rounded-full bg-green-500 animate-pulse shadow-[0_0_8px_rgba(34,197,94,0.5)]"></span>
+</div>
+<div class="space-y-3">
+<button class="w-full flex items-center justify-between p-3 rounded-lg hover:bg-slate-900/50 text-sm text-slate-300 transition-colors group">
+<span>Change Access Key</span>
+<span class="material-symbols-outlined text-slate-600 group-hover:text-primary transition-colors">chevron_right</span>
+</button>
+<button class="w-full flex items-center justify-between p-3 rounded-lg hover:bg-slate-900/50 text-sm text-slate-300 transition-colors group">
+<span>Login Activity Log</span>
+<span class="material-symbols-outlined text-slate-600 group-hover:text-primary transition-colors">chevron_right</span>
+</button>
+<button class="w-full flex items-center justify-between p-3 rounded-lg hover:bg-slate-900/50 text-sm text-slate-300 transition-colors group">
+<span>Logout from all devices</span>
+<span class="material-symbols-outlined text-slate-600 group-hover:text-primary transition-colors">logout</span>
+</button>
+</div>
+</div>
+</div>
+<!-- API Keys -->
+<div class="p-6 rounded-xl bg-surface-container border border-outline-variant/20 lg:row-span-2">
+<div class="flex items-center justify-between mb-6">
+<div class="flex items-center space-x-3">
+<span class="material-symbols-outlined text-primary">terminal</span>
+<h3 class="font-headline-md text-lg text-slate-100">Developer Access</h3>
+</div>
+<button class="text-primary-container"><span class="material-symbols-outlined">add_circle</span></button>
+</div>
+<div class="space-y-4">
+<div class="p-4 rounded-lg bg-slate-950 border border-slate-800/80">
+<div class="flex items-center justify-between mb-2">
+<p class="text-[10px] font-label-caps text-slate-500 uppercase">Production Key</p>
+<span class="material-symbols-outlined text-xs text-slate-600 cursor-pointer hover:text-primary">content_copy</span>
+</div>
+<div class="font-data-mono text-xs text-amber-500 truncate">
+                                bh_live_8392_sk_091k_8273_hjka_82
+                            </div>
+<div class="flex items-center space-x-2 mt-3">
+<span class="w-1.5 h-1.5 rounded-full bg-green-500"></span>
+<span class="text-[10px] text-slate-500">Last used 2m ago</span>
+</div>
+</div>
+<div class="p-4 rounded-lg bg-slate-950/30 border border-dashed border-slate-800">
+<div class="flex items-center justify-between mb-2">
+<p class="text-[10px] font-label-caps text-slate-500 uppercase">Sandbox Key</p>
+<span class="material-symbols-outlined text-xs text-slate-600 cursor-pointer hover:text-primary">content_copy</span>
+</div>
+<div class="font-data-mono text-xs text-slate-500 truncate">
+                                bh_test_9921_sk_xxxx_xxxx_xxxx_xx
+                            </div>
+</div>
+<div class="pt-4 border-t border-slate-800">
+<h4 class="text-xs font-label-caps text-slate-400 mb-3 uppercase">Documentation</h4>
+<div class="grid grid-cols-2 gap-2">
+<a class="p-3 rounded-lg bg-slate-900 text-[10px] font-medium text-center hover:bg-amber-500/10 hover:text-amber-500 transition-all" href="#">REST API</a>
+<a class="p-3 rounded-lg bg-slate-900 text-[10px] font-medium text-center hover:bg-amber-500/10 hover:text-amber-500 transition-all" href="#">WEBHOOKS</a>
+</div>
+</div>
+</div>
+</div>
+<!-- Referral Statistics -->
+<div class="lg:col-span-2 p-6 rounded-xl bg-surface-container border border-outline-variant/20 relative overflow-hidden">
+<div class="absolute top-0 right-0 p-8 opacity-5">
+<span class="material-symbols-outlined text-[120px]">groups</span>
+</div>
+<div class="flex items-center space-x-3 mb-8">
+<span class="material-symbols-outlined text-primary">share</span>
+<h3 class="font-headline-md text-lg text-slate-100">Affiliate Command</h3>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+<div class="space-y-1">
+<p class="text-[10px] font-label-caps text-slate-500 uppercase">Total Referrals</p>
+<p class="text-3xl font-display-lg text-slate-100">182</p>
+<p class="text-xs text-green-500 flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">trending_up</span> +12 this week
+                            </p>
+</div>
+<div class="space-y-1">
+<p class="text-[10px] font-label-caps text-slate-500 uppercase">Unpaid Commission</p>
+<p class="text-3xl font-display-lg text-amber-500">$942.20</p>
+<p class="text-xs text-slate-500">Next payout: Friday</p>
+</div>
+<div class="space-y-1">
+<p class="text-[10px] font-label-caps text-slate-500 uppercase">Conversion Rate</p>
+<p class="text-3xl font-display-lg text-slate-100">8.4%</p>
+<p class="text-xs text-amber-500/60 uppercase font-label-caps tracking-tighter">Elite Level</p>
+</div>
+</div>
+<div class="flex flex-col sm:flex-row gap-4">
+<div class="flex-1 bg-slate-950 border border-slate-800 rounded-lg p-3 flex items-center justify-between">
+<span class="text-xs font-data-mono text-slate-400 truncate mr-4">boosthive.io/ref/hivemaster_99</span>
+<button class="bg-primary/10 text-primary px-3 py-1 rounded text-[10px] font-label-caps hover:bg-primary/20 transition-colors uppercase">Copy Link</button>
+</div>
+<button class="bg-primary text-on-primary font-label-caps text-label-caps px-6 py-3 rounded-lg hover:shadow-[0_0_15px_rgba(255,177,0,0.4)] transition-all">
+                            Request Payout
+                        </button>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer Shell -->
+<footer class="w-full py-8 mt-auto border-t border-slate-900 bg-slate-950">
+<div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center px-8">
+<div class="mb-4 md:mb-0">
+<p class="text-amber-500/50 font-semibold mb-1">Boost Hive Elite SMM</p>
+<p class="text-xs font-light tracking-wide text-slate-500">© 2024 All rights reserved.</p>
+</div>
+<div class="flex space-x-6">
+<a class="text-xs font-light tracking-wide text-slate-600 hover:text-amber-400 transition-colors" href="#">Terms of Service</a>
+<a class="text-xs font-light tracking-wide text-slate-600 hover:text-amber-400 transition-colors" href="#">Privacy Policy</a>
+<a class="text-xs font-light tracking-wide text-slate-600 hover:text-amber-400 transition-colors" href="#">Refunds</a>
+<a class="text-xs font-light tracking-wide text-slate-600 hover:text-amber-400 transition-colors" href="#">API Documentation</a>
+</div>
+</div>
+</footer>
+</div>
+<!-- Mobile Bottom Nav Shell -->
+<nav class="md:hidden fixed bottom-0 w-full z-[60] rounded-t-2xl bg-slate-950/95 backdrop-blur-lg border-t border-slate-800 shadow-[0_-5px_20px_rgba(0,0,0,0.8)] flex justify-around items-center px-4 py-3">
+<a class="flex flex-col items-center justify-center text-slate-500 active:bg-slate-800 rounded-xl py-1 tap-highlight-transparent" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-500 active:bg-slate-800 rounded-xl py-1 tap-highlight-transparent" href="#">
+<span class="material-symbols-outlined">grid_view</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Services</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-500 active:bg-slate-800 rounded-xl py-1 tap-highlight-transparent" href="#">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Orders</span>
+</a>
+<a class="flex flex-col items-center justify-center text-amber-500 bg-amber-500/5 rounded-xl py-1 tap-highlight-transparent" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">wallet</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Wallet</span>
+</a>
+</nav>
+</body></html>

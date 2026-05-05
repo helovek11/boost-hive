@@ -1,0 +1,60 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id           String @id @default(cuid())
+  email        String @unique
+  passwordHash String?
+  role         String?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model Service {
+  id          String  @id @default(cuid())
+  name        String
+  category    String
+  description String
+  pricePer1k  Float
+  minOrder    Int
+  maxOrder    Int
+  speed       String
+  retention   String
+  quality     String
+  icon        String?
+  badge       String?
+}
+
+model Order {
+  id         String  @id @default(cuid())
+  userId     String?
+  serviceId  String?
+  target     String?
+  quantity   Int?
+  status     String?
+  progress   Int?
+  date       DateTime @default(now())
+  price      Float?
+}
+
+model TerminalMessage {
+  id        String @id @default(cuid())
+  timestamp DateTime @default(now())
+  type      String
+  content   String
+}
+
+model ApiCredential {
+  id          String @id @default(cuid())
+  provider    String
+  apiUrl      String
+  apiKeyHash  String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}

@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500;700;800&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-primary": "#7f5600",
+                        "primary-fixed-dim": "#ffba3f",
+                        "on-secondary": "#3c2f00",
+                        "surface-bright": "#343941",
+                        "on-secondary-fixed": "#241a00",
+                        "secondary-fixed": "#ffe088",
+                        "on-primary-fixed": "#281800",
+                        "on-error-container": "#ffdad6",
+                        "on-tertiary": "#2e3037",
+                        "tertiary-fixed-dim": "#c4c6cf",
+                        "surface-container-low": "#171c23",
+                        "on-surface": "#dee2ec",
+                        "on-primary-container": "#6a4700",
+                        "tertiary-fixed": "#e1e2eb",
+                        "surface-container": "#1b2027",
+                        "primary": "#ffd698",
+                        "on-background": "#dee2ec",
+                        "on-tertiary-fixed-variant": "#44474e",
+                        "on-primary-fixed-variant": "#604100",
+                        "outline-variant": "#514533",
+                        "error": "#ffb4ab",
+                        "surface": "#0f141b",
+                        "background": "#0f141b",
+                        "outline": "#9f8e78",
+                        "inverse-surface": "#dee2ec",
+                        "surface-variant": "#30353d",
+                        "secondary-container": "#af8d11",
+                        "on-secondary-fixed-variant": "#574500",
+                        "primary-container": "#ffb100",
+                        "on-error": "#690005",
+                        "secondary-fixed-dim": "#e9c349",
+                        "on-secondary-container": "#342800",
+                        "on-tertiary-container": "#4c4e56",
+                        "tertiary-container": "#bec0c9",
+                        "tertiary": "#dadce5",
+                        "primary-fixed": "#ffdeae",
+                        "surface-container-high": "#252a32",
+                        "inverse-on-surface": "#2c3138",
+                        "on-primary": "#432c00",
+                        "surface-tint": "#ffba3f",
+                        "surface-dim": "#0f141b",
+                        "error-container": "#93000a",
+                        "on-surface-variant": "#d6c4ac",
+                        "on-tertiary-fixed": "#191c22",
+                        "surface-container-highest": "#30353d",
+                        "secondary": "#e9c349",
+                        "surface-container-lowest": "#090f15"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "component-gap": "16px",
+                        "stack-md": "12px",
+                        "stack-lg": "24px",
+                        "container-padding": "32px",
+                        "gutter": "24px",
+                        "unit": "8px",
+                        "stack-sm": "4px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Inter"],
+                        "body-base": ["Inter"],
+                        "label-caps": ["JetBrains Mono"],
+                        "data-mono": ["JetBrains Mono"],
+                        "headline-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-base": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "label-caps": ["11px", {"lineHeight": "1", "letterSpacing": "0.1em", "fontWeight": "700"}],
+                        "data-mono": ["14px", {"lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "headline-md": ["24px", {"lineHeight": "1.2", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .hive-hex-bg {
+            background-image: radial-gradient(#262c35 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+        .glass-card {
+            background: rgba(22, 27, 34, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid #262c35;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-base min-h-screen flex flex-col antialiased">
+<!-- TopNavBar -->
+<nav class="bg-slate-950/80 backdrop-blur-md docked full-width top-0 z-50 border-b border-slate-800/50 shadow-[0_0_15px_rgba(255,177,0,0.05)] flex justify-between items-center w-full px-6 py-3 sticky">
+<div class="flex items-center gap-8">
+<span class="text-xl font-bold tracking-tighter text-amber-500 italic">Boost Hive</span>
+<div class="hidden md:flex gap-6 font-sans text-sm font-medium tracking-tight">
+<a class="text-slate-400 hover:text-amber-400 transition-colors" href="#">Dashboard</a>
+<a class="text-slate-400 hover:text-amber-400 transition-colors" href="#">Marketplace</a>
+<a class="text-slate-400 hover:text-amber-400 transition-colors" href="#">Support</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<span class="text-amber-500 font-data-mono text-sm">$1,240.50</span>
+<button class="bg-primary-container text-on-primary-container px-4 py-1.5 rounded-lg font-label-caps text-[11px] active:scale-95 duration-100 transition-all shadow-[0_0_10px_rgba(255,177,0,0.2)]">Add Funds</button>
+<div class="flex gap-2 ml-2">
+<span class="material-symbols-outlined text-slate-400 hover:text-amber-400 cursor-pointer">notifications</span>
+<span class="material-symbols-outlined text-slate-400 hover:text-amber-400 cursor-pointer">settings</span>
+</div>
+<img alt="User Profile" class="w-8 h-8 rounded-full border border-amber-500/30" data-alt="A detailed digital close-up of a high-tech user profile avatar in a futuristic command center. The lighting is low and cinematic with warm amber glints reflecting off a polished glass surface. The overall aesthetic is dark, sleek, and premium, utilizing a color palette of deep obsidian and glowing honey-toned highlights to maintain brand cohesion." src="https://lh3.googleusercontent.com/aida/ADBb0uivY-LdkYivpV00B432ZYc9lCQEpXI8HqNrG-HgaOKg-B7ebmhslkPWayraV3CNJ7oI9iTWC4_Z7BbhkSpM2sGCXZHbXXk10VL8j4W8V64rViiQ6hckjCRm-bkVinmYhb_NRzD11Uf7f0gQ5nW_0tVNMUAYcqa72Y9-BBfQXIvPPdRh1l83OsZthZe-wTmDQmi8XqQIvrtC3RGI98wYCNjxE9NZGLXbtugiwF0rSp72NHs3wMq7eW3AFARt"/>
+</div>
+</nav>
+<div class="flex flex-1 overflow-hidden">
+<!-- SideNavBar -->
+<aside class="hidden md:flex flex-col h-full p-4 space-y-2 bg-slate-950/90 backdrop-blur-xl h-screen sticky left-0 w-64 border-r border-slate-800/60 shadow-2xl shadow-black font-sans text-sm antialiased">
+<div class="px-4 py-6 border-b border-slate-800/60 mb-4">
+<div class="text-lg font-black text-amber-500 uppercase tracking-widest">Boost Hive</div>
+<div class="text-[10px] text-slate-500 uppercase tracking-[0.2em]">Elite SMM Command</div>
+</div>
+<button class="bg-primary-container text-on-primary-container w-full py-3 rounded-xl flex items-center justify-center gap-2 mb-6 font-label-caps active:scale-[0.98] transition-all">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">add_circle</span>
+                New Order
+            </button>
+<nav class="space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 bg-transparent hover:bg-slate-900/80 hover:text-amber-200 rounded-lg transition-all duration-300" href="#">
+<span class="material-symbols-outlined">hub</span>
+                    Services
+                </a>
+<a class="flex items-center gap-3 px-4 py-3 text-amber-500 bg-amber-500/10 border-r-2 border-amber-500 transition-all duration-300" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">shopping_cart</span>
+                    Orders
+                </a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 bg-transparent hover:bg-slate-900/80 hover:text-amber-200 rounded-lg transition-all duration-300" href="#">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+                    Wallet
+                </a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 bg-transparent hover:bg-slate-900/80 hover:text-amber-200 rounded-lg transition-all duration-300" href="#">
+<span class="material-symbols-outlined">code</span>
+                    API
+                </a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 bg-transparent hover:bg-slate-900/80 hover:text-amber-200 rounded-lg transition-all duration-300" href="#">
+<span class="material-symbols-outlined">bar_chart</span>
+                    Statistics
+                </a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 bg-transparent hover:bg-slate-900/80 hover:text-amber-200 rounded-lg transition-all duration-300" href="#">
+<span class="material-symbols-outlined">shield_person</span>
+                    Admin Tools
+                </a>
+</nav>
+<div class="mt-auto border-t border-slate-800/60 pt-4">
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:text-error transition-all duration-300" href="#">
+<span class="material-symbols-outlined">logout</span>
+                    Logout
+                </a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 overflow-y-auto bg-surface-container-lowest hive-hex-bg p-gutter relative">
+<!-- Page Header -->
+<header class="mb-stack-lg flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div>
+<h1 class="font-display-lg text-display-lg text-on-surface mb-2">Order History</h1>
+<p class="text-on-surface-variant max-w-2xl font-body-base">Review your recent social media campaigns. Track execution speed and delivery percentages in real-time across all active hives.</p>
+</div>
+<div class="flex gap-stack-md">
+<div class="glass-card px-4 py-3 rounded-xl flex flex-col">
+<span class="font-label-caps text-[10px] text-slate-500 mb-1 uppercase tracking-widest">Active Tasks</span>
+<span class="font-data-mono text-xl text-primary-fixed-dim">24 Active</span>
+</div>
+<div class="glass-card px-4 py-3 rounded-xl flex flex-col">
+<span class="font-label-caps text-[10px] text-slate-500 mb-1 uppercase tracking-widest">Avg Speed</span>
+<span class="font-data-mono text-xl text-secondary">482 /hr</span>
+</div>
+</div>
+</header>
+<!-- Order Table / Bento Grid Hybrid -->
+<div class="grid grid-cols-1 gap-gutter">
+<!-- Filters & Search -->
+<div class="flex flex-wrap gap-4 items-center justify-between glass-card p-4 rounded-xl">
+<div class="flex gap-2">
+<button class="bg-secondary-container text-on-secondary-container px-4 py-1.5 rounded-lg font-label-caps text-[10px]">ALL ORDERS</button>
+<button class="bg-surface-variant text-on-surface-variant px-4 py-1.5 rounded-lg font-label-caps text-[10px] hover:bg-slate-700 transition-colors">PENDING</button>
+<button class="bg-surface-variant text-on-surface-variant px-4 py-1.5 rounded-lg font-label-caps text-[10px] hover:bg-slate-700 transition-colors">PROCESSING</button>
+<button class="bg-surface-variant text-on-surface-variant px-4 py-1.5 rounded-lg font-label-caps text-[10px] hover:bg-slate-700 transition-colors">COMPLETED</button>
+</div>
+<div class="relative w-full md:w-64">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-500 text-sm">search</span>
+<input class="w-full bg-surface-container-low border border-slate-700 rounded-lg pl-10 pr-4 py-2 text-sm focus:border-amber-500 focus:ring-1 focus:ring-amber-500/20 outline-none transition-all" placeholder="Search Order ID or Service..." type="text"/>
+</div>
+</div>
+<!-- Orders Table Container -->
+<div class="glass-card rounded-2xl overflow-hidden">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b border-slate-800 bg-slate-900/50">
+<th class="px-6 py-4 font-label-caps text-[10px] text-slate-400 uppercase tracking-widest">Order Details</th>
+<th class="px-6 py-4 font-label-caps text-[10px] text-slate-400 uppercase tracking-widest">Service</th>
+<th class="px-6 py-4 font-label-caps text-[10px] text-slate-400 uppercase tracking-widest">Progress</th>
+<th class="px-6 py-4 font-label-caps text-[10px] text-slate-400 uppercase tracking-widest">Status</th>
+<th class="px-6 py-4 font-label-caps text-[10px] text-slate-400 uppercase tracking-widest text-right">Cost</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-800/50">
+<!-- Row 1: Processing -->
+<tr class="hover:bg-slate-800/30 transition-colors group">
+<td class="px-6 py-5">
+<div class="flex flex-col">
+<span class="font-data-mono text-primary text-sm">#BH-948210</span>
+<span class="text-xs text-slate-500 font-sans">Oct 24, 2023 • 14:22</span>
+</div>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-amber-500/10 flex items-center justify-center text-amber-500">
+<span class="material-symbols-outlined text-lg">trending_up</span>
+</div>
+<div class="flex flex-col">
+<span class="text-sm font-medium text-on-surface">Instagram Ultra High Retention Views</span>
+<span class="text-[10px] text-slate-500 uppercase tracking-tight">Quantity: 50,000</span>
+</div>
+</div>
+</td>
+<td class="px-6 py-5">
+<div class="w-48">
+<div class="flex justify-between items-center mb-1.5">
+<span class="text-[10px] text-slate-400 font-label-caps">32,500 / 50,000</span>
+<span class="text-[10px] text-amber-500 font-data-mono">65%</span>
+</div>
+<div class="h-1.5 w-full bg-slate-800 rounded-full overflow-hidden">
+<div class="h-full bg-primary-container shadow-[0_0_8px_rgba(255,177,0,0.4)] transition-all" style="width: 65%;"></div>
+</div>
+</div>
+</td>
+<td class="px-6 py-5">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-primary-fixed-dim/10 text-primary-fixed-dim text-[10px] font-bold uppercase tracking-wider border border-primary-fixed-dim/20">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-fixed-dim animate-pulse"></span>
+                                        Processing
+                                    </span>
+</td>
+<td class="px-6 py-5 text-right">
+<span class="font-data-mono text-sm text-on-surface">$124.50</span>
+</td>
+</tr>
+<!-- Row 2: Completed -->
+<tr class="hover:bg-slate-800/30 transition-colors group">
+<td class="px-6 py-5">
+<div class="flex flex-col">
+<span class="font-data-mono text-primary text-sm">#BH-948199</span>
+<span class="text-xs text-slate-500 font-sans">Oct 23, 2023 • 09:15</span>
+</div>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-400">
+<span class="material-symbols-outlined text-lg">group</span>
+</div>
+<div class="flex flex-col">
+<span class="text-sm font-medium text-on-surface">Premium Twitter Global Followers</span>
+<span class="text-[10px] text-slate-500 uppercase tracking-tight">Quantity: 2,500</span>
+</div>
+</div>
+</td>
+<td class="px-6 py-5">
+<div class="w-48">
+<div class="flex justify-between items-center mb-1.5">
+<span class="text-[10px] text-slate-400 font-label-caps">2,500 / 2,500</span>
+<span class="text-[10px] text-emerald-500 font-data-mono">100%</span>
+</div>
+<div class="h-1.5 w-full bg-slate-800 rounded-full overflow-hidden">
+<div class="h-full bg-emerald-500 transition-all" style="width: 100%;"></div>
+</div>
+</div>
+</td>
+<td class="px-6 py-5">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-400 text-[10px] font-bold uppercase tracking-wider border border-emerald-500/20">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                                        Completed
+                                    </span>
+</td>
+<td class="px-6 py-5 text-right">
+<span class="font-data-mono text-sm text-on-surface">$38.20</span>
+</td>
+</tr>
+<!-- Row 3: Pending -->
+<tr class="hover:bg-slate-800/30 transition-colors group">
+<td class="px-6 py-5">
+<div class="flex flex-col">
+<span class="font-data-mono text-primary text-sm">#BH-948215</span>
+<span class="text-xs text-slate-500 font-sans">Oct 24, 2023 • 15:45</span>
+</div>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-purple-500/10 flex items-center justify-center text-purple-400">
+<span class="material-symbols-outlined text-lg">thumb_up</span>
+</div>
+<div class="flex flex-col">
+<span class="text-sm font-medium text-on-surface">Facebook Post Real Engagements</span>
+<span class="text-[10px] text-slate-500 uppercase tracking-tight">Quantity: 10,000</span>
+</div>
+</div>
+</td>
+<td class="px-6 py-5">
+<div class="w-48">
+<div class="flex justify-between items-center mb-1.5">
+<span class="text-[10px] text-slate-400 font-label-caps">Queueing...</span>
+<span class="text-[10px] text-slate-500 font-data-mono">0%</span>
+</div>
+<div class="h-1.5 w-full bg-slate-800 rounded-full overflow-hidden">
+<div class="h-full bg-slate-600 transition-all" style="width: 0%;"></div>
+</div>
+</div>
+</td>
+<td class="px-6 py-5">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-slate-500/10 text-slate-400 text-[10px] font-bold uppercase tracking-wider border border-slate-500/20">
+<span class="w-1.5 h-1.5 rounded-full bg-slate-400"></span>
+                                        Pending
+                                    </span>
+</td>
+<td class="px-6 py-5 text-right">
+<span class="font-data-mono text-sm text-on-surface">$22.00</span>
+</td>
+</tr>
+<!-- Row 4: Canceled -->
+<tr class="hover:bg-slate-800/30 transition-colors group">
+<td class="px-6 py-5">
+<div class="flex flex-col">
+<span class="font-data-mono text-primary text-sm">#BH-948152</span>
+<span class="text-xs text-slate-500 font-sans">Oct 21, 2023 • 11:30</span>
+</div>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-error/10 flex items-center justify-center text-error">
+<span class="material-symbols-outlined text-lg">block</span>
+</div>
+<div class="flex flex-col">
+<span class="text-sm font-medium text-on-surface">TikTok Organic Growth Hive</span>
+<span class="text-[10px] text-slate-500 uppercase tracking-tight">Quantity: 5,000</span>
+</div>
+</div>
+</td>
+<td class="px-6 py-5">
+<div class="w-48">
+<div class="flex justify-between items-center mb-1.5">
+<span class="text-[10px] text-error font-label-caps">Terminated</span>
+<span class="text-[10px] text-error font-data-mono">12%</span>
+</div>
+<div class="h-1.5 w-full bg-slate-800 rounded-full overflow-hidden">
+<div class="h-full bg-error transition-all" style="width: 12%;"></div>
+</div>
+</div>
+</td>
+<td class="px-6 py-5">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-error/10 text-error text-[10px] font-bold uppercase tracking-wider border border-error/20">
+<span class="w-1.5 h-1.5 rounded-full bg-error"></span>
+                                        Canceled
+                                    </span>
+</td>
+<td class="px-6 py-5 text-right">
+<span class="font-data-mono text-sm text-on-surface">$0.00</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Detailed Stats / Contextual Bento -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<div class="glass-card p-6 rounded-2xl flex flex-col justify-between">
+<div>
+<span class="material-symbols-outlined text-amber-500 mb-4 text-3xl">bolt</span>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-2">Hive Efficiency</h3>
+<p class="text-sm text-on-surface-variant">Your current account nodes are performing at 98.4% delivery success. Latency is minimized across all primary servers.</p>
+</div>
+<div class="mt-6 flex items-center justify-between">
+<span class="font-data-mono text-xs text-slate-500">Latency: 14ms</span>
+<span class="font-label-caps text-xs text-amber-500">OPTIMAL</span>
+</div>
+</div>
+<div class="glass-card p-6 rounded-2xl flex flex-col justify-between relative overflow-hidden group">
+<div class="absolute -right-4 -top-4 w-32 h-32 bg-primary/5 rounded-full blur-3xl group-hover:bg-primary/10 transition-all"></div>
+<div>
+<span class="material-symbols-outlined text-secondary mb-4 text-3xl">account_balance_wallet</span>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-2">Spend Analysis</h3>
+<p class="text-sm text-on-surface-variant">Total spend this month: $2,482.00. You are in the top 5% of elite power users this cycle.</p>
+</div>
+<div class="mt-6 flex items-end gap-2">
+<div class="h-8 w-4 bg-slate-800 rounded-t-sm"></div>
+<div class="h-12 w-4 bg-slate-800 rounded-t-sm"></div>
+<div class="h-16 w-4 bg-primary-container rounded-t-sm"></div>
+<div class="h-10 w-4 bg-slate-800 rounded-t-sm"></div>
+<span class="ml-4 font-label-caps text-[10px] text-slate-500">Trend: +12.4%</span>
+</div>
+</div>
+<div class="glass-card p-6 rounded-2xl flex flex-col justify-between bg-gradient-to-br from-slate-900/50 to-amber-950/10">
+<div>
+<span class="material-symbols-outlined text-primary mb-4 text-3xl">verified</span>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-2">Elite Support</h3>
+<p class="text-sm text-on-surface-variant">As a Diamond Hive member, your tickets are prioritized with a 15-minute average response time.</p>
+</div>
+<button class="mt-6 w-full border border-amber-500/30 py-2.5 rounded-lg text-amber-500 font-label-caps text-[11px] hover:bg-amber-500/10 transition-colors uppercase tracking-widest">Open Priority Ticket</button>
+</div>
+</div>
+</div>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 w-full z-[60] rounded-t-2xl bg-slate-950/95 backdrop-blur-lg border-t border-slate-800 shadow-[0_-5px_20px_rgba(0,0,0,0.8)] flex justify-around items-center px-4 py-3 tap-highlight-transparent">
+<div class="flex flex-col items-center justify-center text-slate-500 active:bg-slate-800 p-2 rounded-xl">
+<span class="material-symbols-outlined">home</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Home</span>
+</div>
+<div class="flex flex-col items-center justify-center text-slate-500 active:bg-slate-800 p-2 rounded-xl">
+<span class="material-symbols-outlined">grid_view</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Services</span>
+</div>
+<div class="flex flex-col items-center justify-center text-amber-500 bg-amber-500/5 p-2 rounded-xl">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">receipt_long</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Orders</span>
+</div>
+<div class="flex flex-col items-center justify-center text-slate-500 active:bg-slate-800 p-2 rounded-xl">
+<span class="material-symbols-outlined">wallet</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Wallet</span>
+</div>
+</nav>
+</main>
+</div>
+<!-- Footer -->
+<footer class="bg-slate-950 w-full py-8 mt-auto border-t border-slate-900">
+<div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center px-8 gap-6">
+<div class="flex flex-col items-center md:items-start">
+<span class="text-amber-500/50 font-semibold mb-1">Boost Hive Elite</span>
+<span class="text-xs font-light tracking-wide text-slate-500">© 2024 Boost Hive Elite SMM. All rights reserved.</span>
+</div>
+<div class="flex gap-6">
+<a class="text-slate-600 hover:text-amber-400 text-xs font-light tracking-wide transition-colors" href="#">Terms of Service</a>
+<a class="text-slate-600 hover:text-amber-400 text-xs font-light tracking-wide transition-colors" href="#">Privacy Policy</a>
+<a class="text-slate-600 hover:text-amber-400 text-xs font-light tracking-wide transition-colors" href="#">Refunds</a>
+<a class="text-slate-600 hover:text-amber-400 text-xs font-light tracking-wide transition-colors" href="#">API Documentation</a>
+</div>
+</div>
+</footer>
+</body></html>

@@ -1,0 +1,83 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("HIVE_DATABASE_URL")
+}
+
+enum UserRole {
+  USER
+  ADMIN
+  ELITE
+}
+
+enum OrderStatus {
+  PENDING
+  RUNNING
+  COMPLETED
+  CANCELLED
+}
+
+model User {
+  id            String    @id @default(cuid())
+  email         String    @unique
+  passwordHash  String
+  name          String?
+  balance       Float     @default(0.0)
+  role          UserRole  @default(USER)
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  orders        Order[]
+}
+
+model Service {
+  id             String   @id
+  externalId     String?  // ID from Profi-like
+  name           String
+  category       String
+  description    String
+  pricePer1k     Float
+  minOrder       Int
+  maxOrder       Int
+  speed          String
+  retention      String
+  quality        String
+  icon           String?
+  badge          String?
+  isActive       Boolean  @default(true)
+  updatedAt      DateTime @updatedAt
+  orders         Order[]
+}
+
+model Order {
+  id            String      @id @default(cuid())
+  userId        String
+  serviceId     String
+  target        String
+  quantity      Int
+  price         Float
+  status        OrderStatus @default(PENDING)
+  progress      Int         @default(0)
+  externalId    String?
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+
+  user          User        @relation(fields: [userId], references: [id])
+  service       Service     @relation(fields: [serviceId], references: [id])
+
+  @@index([userId])
+  @@index([status])
+}
+
+model TerminalMessage {
+  id        String   @id @default(cuid())
+  timestamp DateTime @default(now())
+  type      String   // SYSTEM, SUCCESS, INFO, ERROR
+  content   String
+  nodeId    String?  @default("HIVE_NODE_MAIN")
+}

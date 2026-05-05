@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-primary": "#7f5600",
+                        "primary-fixed-dim": "#ffba3f",
+                        "on-secondary": "#3c2f00",
+                        "surface-bright": "#343941",
+                        "on-secondary-fixed": "#241a00",
+                        "secondary-fixed": "#ffe088",
+                        "on-primary-fixed": "#281800",
+                        "on-error-container": "#ffdad6",
+                        "on-tertiary": "#2e3037",
+                        "tertiary-fixed-dim": "#c4c6cf",
+                        "surface-container-low": "#171c23",
+                        "on-surface": "#dee2ec",
+                        "on-primary-container": "#6a4700",
+                        "tertiary-fixed": "#e1e2eb",
+                        "surface-container": "#1b2027",
+                        "primary": "#ffd698",
+                        "on-background": "#dee2ec",
+                        "on-tertiary-fixed-variant": "#44474e",
+                        "on-primary-fixed-variant": "#604100",
+                        "outline-variant": "#514533",
+                        "error": "#ffb4ab",
+                        "surface": "#0f141b",
+                        "background": "#0f141b",
+                        "outline": "#9f8e78",
+                        "inverse-surface": "#dee2ec",
+                        "surface-variant": "#30353d",
+                        "secondary-container": "#af8d11",
+                        "on-secondary-fixed-variant": "#574500",
+                        "primary-container": "#ffb100",
+                        "on-error": "#690005",
+                        "secondary-fixed-dim": "#e9c349",
+                        "on-secondary-container": "#342800",
+                        "on-tertiary-container": "#4c4e56",
+                        "tertiary-container": "#bec0c9",
+                        "tertiary": "#dadce5",
+                        "primary-fixed": "#ffdeae",
+                        "surface-container-high": "#252a32",
+                        "inverse-on-surface": "#2c3138",
+                        "on-primary": "#432c00",
+                        "surface-tint": "#ffba3f",
+                        "surface-dim": "#0f141b",
+                        "error-container": "#93000a",
+                        "on-surface-variant": "#d6c4ac",
+                        "on-tertiary-fixed": "#191c22",
+                        "surface-container-highest": "#30353d",
+                        "secondary": "#e9c349",
+                        "surface-container-lowest": "#090f15"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "component-gap": "16px",
+                        "stack-md": "12px",
+                        "stack-lg": "24px",
+                        "container-padding": "32px",
+                        "gutter": "24px",
+                        "unit": "8px",
+                        "stack-sm": "4px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Inter"],
+                        "body-base": ["Inter"],
+                        "label-caps": ["JetBrains Mono"],
+                        "data-mono": ["JetBrains Mono"],
+                        "headline-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-base": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "label-caps": ["11px", {"lineHeight": "1", "letterSpacing": "0.1em", "fontWeight": "700"}],
+                        "data-mono": ["14px", {"lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "headline-md": ["24px", {"lineHeight": "1.2", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(22, 27, 34, 0.6);
+            backdrop-filter: blur(20px);
+            border: 1px solid #262c35;
+        }
+        .honey-glow {
+            box-shadow: 0 0 15px rgba(255, 177, 0, 0.15);
+        }
+        .hive-hex-bg {
+            background-image: radial-gradient(circle at 2px 2px, #262c35 1px, transparent 0);
+            background-size: 24px 24px;
+        }
+    </style>
+<style>
+        /* Custom Scrollbar Styling */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #FFB100;
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #e69f00;
+        }
+
+        /* Firefox Support */
+        * {
+            scrollbar-width: thin;
+            scrollbar-color: #FFB100 transparent;
+        }
+    </style></head>
+<body class="bg-background text-on-surface font-body-base selection:bg-primary-container selection:text-on-primary-container min-h-screen flex">
+<!-- SideNavBar Component -->
+<aside class="hidden md:flex flex-col h-screen sticky left-0 w-64 border-r border-slate-800/60 bg-slate-950/90 backdrop-blur-xl p-4 space-y-2 z-40">
+<div class="flex items-center gap-3 px-2 py-4 mb-4">
+<div class="w-10 h-10 rounded-lg bg-primary-container flex items-center justify-center honey-glow">
+<span class="material-symbols-outlined text-on-primary-container" data-icon="hub">hub</span>
+</div>
+<div>
+<h2 class="text-lg font-black text-amber-500 uppercase tracking-widest">Boost Hive</h2>
+<p class="text-[10px] text-slate-500 font-label-caps">Elite SMM Command</p>
+</div>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-300 ease-in-out text-slate-500 bg-transparent hover:bg-slate-900/80 hover:text-amber-200" href="#">
+<span class="material-symbols-outlined" data-icon="grid_view">grid_view</span>
+<span class="font-sans text-sm antialiased">Services</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-300 ease-in-out text-slate-500 bg-transparent hover:bg-slate-900/80 hover:text-amber-200" href="#">
+<span class="material-symbols-outlined" data-icon="shopping_cart">shopping_cart</span>
+<span class="font-sans text-sm antialiased">Orders</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-300 ease-in-out text-slate-500 bg-transparent hover:bg-slate-900/80 hover:text-amber-200" href="#">
+<span class="material-symbols-outlined" data-icon="account_balance_wallet">account_balance_wallet</span>
+<span class="font-sans text-sm antialiased">Wallet</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-300 ease-in-out text-slate-500 bg-transparent hover:bg-slate-900/80 hover:text-amber-200" href="#">
+<span class="material-symbols-outlined" data-icon="code">code</span>
+<span class="font-sans text-sm antialiased">API</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-300 ease-in-out text-slate-500 bg-transparent hover:bg-slate-900/80 hover:text-amber-200" href="#">
+<span class="material-symbols-outlined" data-icon="bar_chart">bar_chart</span>
+<span class="font-sans text-sm antialiased">Statistics</span>
+</a>
+<!-- Active State for Admin Tools -->
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-300 ease-in-out text-amber-500 bg-amber-500/10 border-r-2 border-amber-500" href="#">
+<span class="material-symbols-outlined" data-icon="shield_person">shield_person</span>
+<span class="font-sans text-sm antialiased">Admin Tools</span>
+</a>
+</nav>
+<div class="pt-4 border-t border-slate-800/60">
+<button class="w-full bg-primary-container text-on-primary-container font-label-caps py-3 rounded-xl honey-glow hover:brightness-110 transition-all mb-4">
+                New Order
+            </button>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-500 hover:text-error transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span class="font-sans text-sm antialiased">Logout</span>
+</a>
+</div>
+</aside>
+<main class="flex-1 flex flex-col min-w-0 hive-hex-bg overflow-y-auto h-screen">
+<!-- TopNavBar Component -->
+<header class="sticky top-0 z-50 flex justify-between items-center w-full px-6 py-3 bg-slate-950/80 backdrop-blur-md border-b border-slate-800/50 shadow-[0_0_15px_rgba(255,177,0,0.05)]">
+<div class="flex items-center gap-8">
+<span class="text-xl font-bold tracking-tighter text-amber-500 italic">Boost Hive</span>
+<div class="hidden lg:flex items-center bg-slate-900/50 rounded-full px-4 py-1.5 border border-slate-800">
+<span class="material-symbols-outlined text-slate-500 text-sm mr-2" data-icon="search">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm text-slate-300 w-48" placeholder="Search system logs..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="hidden md:flex items-center gap-4">
+<a class="font-sans text-sm font-medium tracking-tight text-slate-400 hover:text-amber-400 transition-colors" href="#">Dashboard</a>
+<a class="font-sans text-sm font-medium tracking-tight text-slate-400 hover:text-amber-400 transition-colors" href="#">Marketplace</a>
+<a class="font-sans text-sm font-medium tracking-tight text-slate-400 hover:text-amber-400 transition-colors" href="#">Support</a>
+</div>
+<div class="flex items-center gap-3">
+<div class="flex flex-col items-end mr-2">
+<span class="text-xs text-slate-500 font-label-caps">Balance</span>
+<span class="text-primary font-data-mono">$1,240.50</span>
+</div>
+<button class="bg-primary-container text-on-primary-container px-4 py-1.5 rounded-full text-xs font-bold hover:brightness-110 active:scale-95 transition-all">
+                        Add Funds
+                    </button>
+<div class="flex items-center gap-2 ml-4">
+<button class="text-slate-400 hover:text-amber-400 transition-colors relative">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="absolute top-0 right-0 w-2 h-2 bg-primary rounded-full"></span>
+</button>
+<button class="text-slate-400 hover:text-amber-400 transition-colors">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+<img alt="User profile avatar" class="w-8 h-8 rounded-full border border-primary/30 object-cover" data-alt="A professional close-up of a high-tech digital avatar representing an elite system administrator. The avatar is rendered in a sleek, glassmorphic style with neon amber highlights on a dark obsidian background. Subtle hexagonal patterns are visible in the bokeh effect behind the figure. The overall aesthetic is clean, modern, and exudes a sense of powerful technical authority within a dark-mode interface." src="https://lh3.googleusercontent.com/aida/ADBb0uivY-LdkYivpV00B432ZYc9lCQEpXI8HqNrG-HgaOKg-B7ebmhslkPWayraV3CNJ7oI9iTWC4_Z7BbhkSpM2sGCXZHbXXk10VL8j4W8V64rViiQ6hckjCRm-bkVinmYhb_NRzD11Uf7f0gQ5nW_0tVNMUAYcqa72Y9-BBfQXIvPPdRh1l83OsZthZe-wTmDQmi8XqQIvrtC3RGI98wYCNjxE9NZGLXbtugiwF0rSp72NHs3wMq7eW3AFARt"/>
+</div>
+</div>
+</div>
+</header>
+<div class="p-8 max-w-7xl mx-auto w-full space-y-8">
+<!-- Hero Stats Row: Bento Grid Layout -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+<div class="glass-panel p-6 rounded-2xl md:col-span-2 relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-6xl" data-icon="monitoring">monitoring</span>
+</div>
+<p class="text-slate-500 font-label-caps text-[10px] uppercase mb-1">Global Revenue (24h)</p>
+<h3 class="text-display-lg font-display-lg text-primary">$42,904.22</h3>
+<div class="flex items-center gap-2 mt-4 text-secondary">
+<span class="material-symbols-outlined text-sm" data-icon="trending_up">trending_up</span>
+<span class="font-data-mono text-sm">+12.4% from yesterday</span>
+</div>
+</div>
+<div class="glass-panel p-6 rounded-2xl">
+<p class="text-slate-500 font-label-caps text-[10px] uppercase mb-1">Active Hive Nodes</p>
+<h3 class="text-headline-md font-headline-md text-on-surface">1,284</h3>
+<div class="mt-4 flex items-center gap-1">
+<div class="h-1 flex-1 bg-primary rounded-full"></div>
+<div class="h-1 flex-1 bg-primary rounded-full"></div>
+<div class="h-1 flex-1 bg-primary rounded-full"></div>
+<div class="h-1 flex-1 bg-slate-800 rounded-full"></div>
+</div>
+<p class="text-xs text-slate-500 mt-2 font-data-mono">82% CPU Utilization</p>
+</div>
+<div class="glass-panel p-6 rounded-2xl">
+<p class="text-slate-500 font-label-caps text-[10px] uppercase mb-1">Total Users</p>
+<h3 class="text-headline-md font-headline-md text-on-surface">482,109</h3>
+<div class="flex items-center gap-2 mt-4 text-error">
+<span class="material-symbols-outlined text-sm" data-icon="warning">warning</span>
+<span class="font-data-mono text-sm">12 failed signups</span>
+</div>
+</div>
+</div>
+<!-- Middle Section: Asymmetric Main View -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<!-- System Health Monitor -->
+<div class="lg:col-span-2 space-y-6">
+<div class="glass-panel p-6 rounded-2xl border-l-4 border-l-primary">
+<div class="flex justify-between items-center mb-6">
+<h4 class="text-headline-md font-headline-md">System Health Monitor</h4>
+<span class="bg-secondary/10 text-secondary px-3 py-1 rounded-full text-[10px] font-bold border border-secondary/20">LIVE FEED</span>
+</div>
+<div class="space-y-4">
+<div class="flex items-center justify-between p-4 bg-slate-900/40 rounded-xl border border-slate-800/50">
+<div class="flex items-center gap-4">
+<div class="w-2 h-2 rounded-full bg-secondary shadow-[0_0_8px_#e9c349]"></div>
+<span class="font-data-mono text-sm">Instagram API Hook</span>
+</div>
+<span class="text-slate-400 font-data-mono text-xs">Latency: 42ms</span>
+</div>
+<div class="flex items-center justify-between p-4 bg-slate-900/40 rounded-xl border border-slate-800/50">
+<div class="flex items-center gap-4">
+<div class="w-2 h-2 rounded-full bg-secondary shadow-[0_0_8px_#e9c349]"></div>
+<span class="font-data-mono text-sm">TikTok Engagement Engine</span>
+</div>
+<span class="text-slate-400 font-data-mono text-xs">Latency: 118ms</span>
+</div>
+<div class="flex items-center justify-between p-4 bg-slate-900/40 rounded-xl border border-slate-800/50">
+<div class="flex items-center gap-4">
+<div class="w-2 h-2 rounded-full bg-error shadow-[0_0_8px_#ffb4ab]"></div>
+<span class="font-data-mono text-sm">YouTube Delivery Cluster</span>
+</div>
+<span class="text-error font-data-mono text-xs">Degraded: 852ms</span>
+</div>
+</div>
+</div>
+<div class="glass-panel p-6 rounded-2xl">
+<h4 class="text-headline-md font-headline-md mb-6">Top Performing Services</h4>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead>
+<tr class="border-b border-slate-800 text-slate-500 font-label-caps text-[10px]">
+<th class="pb-3 px-4">SERVICE NAME</th>
+<th class="pb-3 px-4">ORDERS</th>
+<th class="pb-3 px-4">REVENUE</th>
+<th class="pb-3 px-4 text-right">STATUS</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-800/50 font-data-mono text-sm">
+<tr>
+<td class="py-4 px-4 text-on-surface">IG Real Follower High Drop</td>
+<td class="py-4 px-4 text-slate-400">14,203</td>
+<td class="py-4 px-4 text-primary">$8,521.80</td>
+<td class="py-4 px-4 text-right"><span class="text-secondary">● Active</span></td>
+</tr>
+<tr>
+<td class="py-4 px-4 text-on-surface">TikTok Viral Package S1</td>
+<td class="py-4 px-4 text-slate-400">9,812</td>
+<td class="py-4 px-4 text-primary">$12,401.00</td>
+<td class="py-4 px-4 text-right"><span class="text-secondary">● Active</span></td>
+</tr>
+<tr>
+<td class="py-4 px-4 text-on-surface">X Premium Verified Likes</td>
+<td class="py-4 px-4 text-slate-400">4,120</td>
+<td class="py-4 px-4 text-primary">$3,210.50</td>
+<td class="py-4 px-4 text-right"><span class="text-secondary">● Active</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<!-- Admin Mod Tools -->
+<div class="space-y-6">
+<div class="glass-panel p-6 rounded-2xl">
+<h4 class="text-headline-md font-headline-md mb-4">Admin Quick Tools</h4>
+<div class="grid grid-cols-2 gap-3">
+<button class="flex flex-col items-center justify-center p-4 bg-slate-900 rounded-xl border border-slate-800 hover:border-primary/50 transition-colors group">
+<span class="material-symbols-outlined text-slate-500 group-hover:text-primary mb-2" data-icon="person_search">person_search</span>
+<span class="text-[10px] font-label-caps text-slate-400 uppercase">Find User</span>
+</button>
+<button class="flex flex-col items-center justify-center p-4 bg-slate-900 rounded-xl border border-slate-800 hover:border-primary/50 transition-colors group">
+<span class="material-symbols-outlined text-slate-500 group-hover:text-primary mb-2" data-icon="payments">payments</span>
+<span class="text-[10px] font-label-caps text-slate-400 uppercase">Refunds</span>
+</button>
+<button class="flex flex-col items-center justify-center p-4 bg-slate-900 rounded-xl border border-slate-800 hover:border-primary/50 transition-colors group">
+<span class="material-symbols-outlined text-slate-500 group-hover:text-primary mb-2" data-icon="dns">dns</span>
+<span class="text-[10px] font-label-caps text-slate-400 uppercase">Nodes</span>
+</button>
+<button class="flex flex-col items-center justify-center p-4 bg-slate-900 rounded-xl border border-slate-800 hover:border-primary/50 transition-colors group">
+<span class="material-symbols-outlined text-slate-500 group-hover:text-primary mb-2" data-icon="support_agent">support_agent</span>
+<span class="text-[10px] font-label-caps text-slate-400 uppercase">Support</span>
+</button>
+</div>
+</div>
+<div class="glass-panel p-6 rounded-2xl">
+<h4 class="text-headline-md font-headline-md mb-4">Urgent Alerts</h4>
+<div class="space-y-3">
+<div class="bg-error-container/20 border border-error/30 p-3 rounded-lg flex gap-3">
+<span class="material-symbols-outlined text-error" data-icon="report_problem">report_problem</span>
+<div>
+<p class="text-xs font-bold text-error uppercase">Critical: High Refund Rate</p>
+<p class="text-[10px] text-on-surface-variant">User ID #4928 requesting 14 manual refunds.</p>
+</div>
+</div>
+<div class="bg-primary-container/10 border border-primary/20 p-3 rounded-lg flex gap-3">
+<span class="material-symbols-outlined text-primary" data-icon="verified_user">verified_user</span>
+<div>
+<p class="text-xs font-bold text-primary uppercase">KYC Review Needed</p>
+<p class="text-[10px] text-on-surface-variant">New high-volume entity registered.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Hive Indicator (Custom Component) -->
+<div class="glass-panel p-6 rounded-2xl flex flex-col items-center text-center">
+<p class="text-slate-500 font-label-caps text-[10px] uppercase mb-4">Hive Master Status</p>
+<div class="relative w-32 h-32 flex items-center justify-center">
+<svg class="w-full h-full -rotate-90">
+<circle cx="64" cy="64" fill="transparent" r="56" stroke="#161b22" stroke-width="8"></circle>
+<circle class="honey-glow" cx="64" cy="64" fill="transparent" r="56" stroke="#ffba3f" stroke-dasharray="351.8" stroke-dashoffset="88" stroke-linecap="round" stroke-width="8"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="text-2xl font-bold text-primary">75%</span>
+<span class="text-[8px] font-label-caps text-slate-500 uppercase">Optimization</span>
+</div>
+</div>
+<p class="text-xs text-slate-400 mt-4">System is operating at optimal hive density. All workers responding within nominal parameters.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer Component -->
+<footer class="w-full py-8 mt-auto border-t border-slate-900 bg-slate-950">
+<div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center px-8">
+<div class="mb-4 md:mb-0">
+<span class="text-amber-500/50 font-semibold">Boost Hive Elite SMM</span>
+<p class="text-xs font-light tracking-wide text-slate-500 mt-1">© 2024 Boost Hive Elite SMM. All rights reserved.</p>
+</div>
+<div class="flex flex-wrap justify-center gap-6">
+<a class="text-xs font-light tracking-wide text-slate-600 hover:text-amber-400 transition-colors" href="#">Terms of Service</a>
+<a class="text-xs font-light tracking-wide text-slate-600 hover:text-amber-400 transition-colors" href="#">Privacy Policy</a>
+<a class="text-xs font-light tracking-wide text-slate-600 hover:text-amber-400 transition-colors" href="#">Refunds</a>
+<a class="text-xs font-light tracking-wide text-slate-600 hover:text-amber-400 transition-colors" href="#">API Documentation</a>
+</div>
+</div>
+</footer>
+</main>
+<!-- BottomNavBar Component (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 w-full z-[60] rounded-t-2xl bg-slate-950/95 backdrop-blur-lg border-t border-slate-800 shadow-[0_-5px_20px_rgba(0,0,0,0.8)] flex justify-around items-center px-4 py-3">
+<div class="flex flex-col items-center justify-center text-amber-500 bg-amber-500/5 rounded-xl py-1 px-3">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Home</span>
+</div>
+<div class="flex flex-col items-center justify-center text-slate-500 active:bg-slate-800 rounded-xl py-1 px-3">
+<span class="material-symbols-outlined" data-icon="grid_view">grid_view</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Services</span>
+</div>
+<div class="flex flex-col items-center justify-center text-slate-500 active:bg-slate-800 rounded-xl py-1 px-3">
+<span class="material-symbols-outlined" data-icon="receipt_long">receipt_long</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Orders</span>
+</div>
+<div class="flex flex-col items-center justify-center text-slate-500 active:bg-slate-800 rounded-xl py-1 px-3">
+<span class="material-symbols-outlined" data-icon="wallet">wallet</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Wallet</span>
+</div>
+</nav>
+</body></html>

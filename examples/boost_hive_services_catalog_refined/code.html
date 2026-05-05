@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "inverse-primary": "#7f5600",
+                    "primary-fixed-dim": "#ffba3f",
+                    "on-secondary": "#3c2f00",
+                    "surface-bright": "#343941",
+                    "on-secondary-fixed": "#241a00",
+                    "secondary-fixed": "#ffe088",
+                    "on-primary-fixed": "#281800",
+                    "on-error-container": "#ffdad6",
+                    "on-tertiary": "#2e3037",
+                    "tertiary-fixed-dim": "#c4c6cf",
+                    "surface-container-low": "#171c23",
+                    "on-surface": "#dee2ec",
+                    "on-primary-container": "#6a4700",
+                    "tertiary-fixed": "#e1e2eb",
+                    "surface-container": "#1b2027",
+                    "primary": "#ffd698",
+                    "on-background": "#dee2ec",
+                    "on-tertiary-fixed-variant": "#44474e",
+                    "on-primary-fixed-variant": "#604100",
+                    "outline-variant": "#514533",
+                    "error": "#ffb4ab",
+                    "surface": "#0f141b",
+                    "background": "#0f141b",
+                    "outline": "#9f8e78",
+                    "inverse-surface": "#dee2ec",
+                    "surface-variant": "#30353d",
+                    "secondary-container": "#af8d11",
+                    "on-secondary-fixed-variant": "#574500",
+                    "primary-container": "#ffb100",
+                    "on-error": "#690005",
+                    "secondary-fixed-dim": "#e9c349",
+                    "on-secondary-container": "#342800",
+                    "on-tertiary-container": "#4c4e56",
+                    "tertiary-container": "#bec0c9",
+                    "tertiary": "#dadce5",
+                    "primary-fixed": "#ffdeae",
+                    "surface-container-high": "#252a32",
+                    "inverse-on-surface": "#2c3138",
+                    "on-primary": "#432c00",
+                    "surface-tint": "#ffba3f",
+                    "surface-dim": "#0f141b",
+                    "error-container": "#93000a",
+                    "on-surface-variant": "#d6c4ac",
+                    "on-tertiary-fixed": "#191c22",
+                    "surface-container-highest": "#30353d",
+                    "secondary": "#e9c349",
+                    "surface-container-lowest": "#090f15"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "component-gap": "16px",
+                    "stack-md": "12px",
+                    "stack-lg": "24px",
+                    "container-padding": "32px",
+                    "gutter": "24px",
+                    "unit": "8px",
+                    "stack-sm": "4px"
+            },
+            "fontFamily": {
+                    "display-lg": ["Inter"],
+                    "body-base": ["Inter"],
+                    "label-caps": ["JetBrains Mono"],
+                    "data-mono": ["JetBrains Mono"],
+                    "headline-md": ["Inter"]
+            },
+            "fontSize": {
+                    "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-base": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "label-caps": ["11px", {"lineHeight": "1", "letterSpacing": "0.1em", "fontWeight": "700"}],
+                    "data-mono": ["14px", {"lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                    "headline-md": ["24px", {"lineHeight": "1.2", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .glass-card {
+            background: linear-gradient(135deg, rgba(22, 27, 34, 0.7) 0%, rgba(15, 20, 27, 0.9) 100%);
+            border: 1px solid #262C35;
+        }
+        .honey-glow:hover {
+            box-shadow: 0 0 20px rgba(255, 177, 0, 0.15);
+            border-color: #ffb100;
+        }
+        .hex-bg {
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0l25.98 15v30L30 60 4.02 45V15z' fill-opacity='0.03' fill='%23FFB100' fill-rule='evenodd'/%3E%3C/svg%3E");
+        }
+    
+        /* Stealthy Sidebar Scrollbar */
+        .sidebar-scroll::-webkit-scrollbar {
+            width: 3px;
+        }
+        .sidebar-scroll::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .sidebar-scroll::-webkit-scrollbar-thumb {
+            background: rgba(245, 158, 11, 0.1);
+            border-radius: 20px;
+            transition: background 0.3s ease;
+        }
+        .sidebar-scroll:hover::-webkit-scrollbar-thumb {
+            background: rgba(245, 158, 11, 0.4);
+        }
+
+        /* Refined Sidebar Glassmorphism */
+        .sidebar-refined {
+            background: linear-gradient(180deg, rgba(2, 6, 23, 0.7) 0%, rgba(2, 6, 23, 0.95) 100%);
+            backdrop-blur: 12px;
+        }
+    </style>
+</head>
+<body class="bg-background font-body-base text-on-background min-h-screen flex flex-col">
+<!-- TopNavBar Component -->
+<header class="bg-slate-950/80 backdrop-blur-md text-sans text-sm font-medium tracking-tight docked full-width top-0 z-50 border-b border-slate-800/50 shadow-[0_0_15px_rgba(255,177,0,0.05)] flex justify-between items-center w-full px-6 py-3">
+<div class="flex items-center gap-8">
+<span class="text-xl font-bold tracking-tighter text-amber-500 italic">Boost Hive</span>
+<nav class="hidden md:flex items-center space-x-6">
+<a class="text-slate-400 hover:text-amber-400 transition-colors" href="#">Dashboard</a>
+<a class="text-amber-500 border-b-2 border-amber-500 pb-1 hover:text-amber-400 transition-colors" href="#">Marketplace</a>
+<a class="text-slate-400 hover:text-amber-400 transition-colors" href="#">Support</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden sm:flex flex-col items-end mr-2">
+<span class="text-[10px] font-label-caps text-slate-500 uppercase">Balance</span>
+<span class="font-data-mono text-amber-500">$1,240.50</span>
+</div>
+<button class="bg-primary-container text-on-primary-container px-4 py-1.5 rounded-lg font-bold text-xs hover:opacity-90 active:scale-95 duration-100">Add Funds</button>
+<div class="flex items-center gap-2 text-slate-400 border-l border-slate-800 pl-4">
+<span class="material-symbols-outlined hover:text-amber-400 cursor-pointer">notifications</span>
+<span class="material-symbols-outlined hover:text-amber-400 cursor-pointer">settings</span>
+<img alt="User profile avatar" class="w-8 h-8 rounded-full border border-slate-700 object-cover" data-alt="A futuristic portrait of a professional male digital marketing executive in a dark tech-focused environment. The lighting is low-key with sharp amber highlights reflecting off his glasses. The background features a blurred command center with glowing holographic charts in shades of gold and deep indigo, maintaining an elite stealth-tech aesthetic." src="https://lh3.googleusercontent.com/aida/ADBb0uivY-LdkYivpV00B432ZYc9lCQEpXI8HqNrG-HgaOKg-B7ebmhslkPWayraV3CNJ7oI9iTWC4_Z7BbhkSpM2sGCXZHbXXk10VL8j4W8V64rViiQ6hckjCRm-bkVinmYhb_NRzD11Uf7f0gQ5nW_0tVNMUAYcqa72Y9-BBfQXIvPPdRh1l83OsZthZe-wTmDQmi8XqQIvrtC3RGI98wYCNjxE9NZGLXbtugiwF0rSp72NHs3wMq7eW3AFARt"/>
+</div>
+</div>
+</header>
+<div class="flex flex-1">
+<!-- SideNavBar Component -->
+<aside class="hidden md:flex bg-slate-950/90 backdrop-blur-xl font-sans text-sm antialiased h-screen sticky left-0 w-64 border-r border-slate-800/60 shadow-2xl shadow-black flex-col p-4 space-y-2 sidebar-scroll sidebar-refined overflow-y-auto">
+<div class="px-2 py-4 mb-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-amber-500/10 rounded-xl flex items-center justify-center border border-amber-500/30">
+<span class="material-symbols-outlined text-amber-500">hive</span>
+</div>
+<div>
+<h2 class="text-lg font-black text-amber-500 uppercase tracking-widest leading-none">Boost Hive</h2>
+<p class="text-[10px] text-slate-500 uppercase tracking-wider mt-1">Elite SMM Command</p>
+</div>
+</div>
+</div>
+<button class="w-full bg-amber-500/10 text-amber-500 border border-amber-500/20 py-3 rounded-xl font-bold uppercase tracking-widest text-[11px] mb-6 hover:bg-amber-500/20 transition-all duration-300">
+                New Order
+            </button>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 text-amber-500 bg-amber-500/10 border-r-2 border-amber-500 transition-all duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined">hub</span>
+<span>Services</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 bg-transparent hover:bg-slate-900/80 hover:text-amber-200 transition-all duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined">shopping_cart</span>
+<span>Orders</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 bg-transparent hover:bg-slate-900/80 hover:text-amber-200 transition-all duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+<span>Wallet</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 bg-transparent hover:bg-slate-900/80 hover:text-amber-200 transition-all duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined">code</span>
+<span>API</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 bg-transparent hover:bg-slate-900/80 hover:text-amber-200 transition-all duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined">bar_chart</span>
+<span>Statistics</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 bg-transparent hover:bg-slate-900/80 hover:text-amber-200 transition-all duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined">shield_person</span>
+<span>Admin Tools</span>
+</a>
+</nav>
+<div class="pt-4 border-t border-slate-800/60">
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:text-red-400 transition-colors" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span>Logout</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 overflow-y-auto hex-bg pb-24 md:pb-8">
+<div class="max-w-7xl mx-auto p-6 md:p-8 space-y-8">
+<!-- Hero Section & Filters -->
+<div class="space-y-6">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div>
+<h1 class="font-display-lg text-display-lg text-primary leading-tight">Service Catalog</h1>
+<p class="text-slate-400 max-w-xl">Deploy tactical social dominance across all major platforms with precision-engineered engagement packages.</p>
+</div>
+<div class="flex items-center gap-4 bg-slate-900/50 p-2 rounded-xl border border-slate-800">
+<button class="flex items-center gap-2 px-4 py-2 bg-amber-500 text-on-primary-container rounded-lg font-bold text-sm">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">grid_view</span>
+                                Grid
+                            </button>
+<button class="flex items-center gap-2 px-4 py-2 text-slate-400 hover:text-white transition-colors text-sm">
+<span class="material-symbols-outlined text-sm">list</span>
+                                List
+                            </button>
+</div>
+</div>
+<!-- Filter Bar -->
+<div class="glass-card rounded-2xl p-4 flex flex-col lg:flex-row gap-4 items-center">
+<div class="relative w-full lg:w-96">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-500 text-lg">search</span>
+<input class="w-full bg-slate-950 border-slate-800 rounded-xl pl-10 pr-4 py-3 text-sm focus:border-amber-500 focus:ring-1 focus:ring-amber-500 transition-all" placeholder="Search services (e.g. TikTok likes)..." type="text"/>
+</div>
+<div class="flex items-center gap-2 overflow-x-auto w-full no-scrollbar pb-2 lg:pb-0">
+<button class="whitespace-nowrap px-4 py-2 rounded-full border border-amber-500 bg-amber-500/10 text-amber-500 text-xs font-bold uppercase tracking-wider">All Platforms</button>
+<button class="whitespace-nowrap px-4 py-2 rounded-full border border-slate-800 bg-slate-900/50 text-slate-400 text-xs font-bold uppercase tracking-wider hover:border-slate-600 transition-colors flex items-center gap-2">
+<img alt="Instagram" class="w-4 h-4 rounded-sm grayscale" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBMqxf3rBGD0HTsv48hiJ8ZRF2XRO0jQn8LUG-VQdxDLvPbzgFS1Xr6hWluchaB-DeDdfs54WrwxZFODG29JLnnuDepnlGLlyLTKuXW3mMGYin6iuqrf0SkD2qj7RFzcyWDX6TjGesRiWb9Ty1zipbXuz0thoSqVSrfV8SmZwbvc-7OnnIZLAs8eua7SpY1FuoYx0uA-yqktGrJPrOSPObgAe8ggaPMjiotdctFlBAd0CJ9yeRl-pSLDjKWCO6J26lJp5XKNJvl6uxn"/>
+                                Instagram
+                            </button>
+<button class="whitespace-nowrap px-4 py-2 rounded-full border border-slate-800 bg-slate-900/50 text-slate-400 text-xs font-bold uppercase tracking-wider hover:border-slate-600 transition-colors flex items-center gap-2">
+<img alt="TikTok" class="w-4 h-4 rounded-sm grayscale" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCTDw5YH78lAzyqzD53-04776P_A1H27naZMqfkNLK3jq17W7hVcFFC5LFz1ZBOQwRhCkVNbqAxL7XMo54JttKAKVM1gEBqP14HKdfu30T362sj_st85mLDquf_EoCg6czYQq7ABxvf4z8yqi_C1aynvAtsuswH00VGG8Dv0LYCa1EUN8WqiS2nGcn0TK0K-YEdI1qL5cTo-YfcdtXIYUWUDpb1riw2JiQ0l43929tnc9pVDUu_-Y02VJ2ZsV6hbGSZypj4pra6tUeu"/>
+                                TikTok
+                            </button>
+<button class="whitespace-nowrap px-4 py-2 rounded-full border border-slate-800 bg-slate-900/50 text-slate-400 text-xs font-bold uppercase tracking-wider hover:border-slate-600 transition-colors flex items-center gap-2">
+<img alt="YouTube" class="w-4 h-4 rounded-sm grayscale" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6IKU8P4GIDi29MMryEbEJI6MRkNu03plJ6or2I-8ATH4pMsvYGHXSISfe6__4IYAbof93-Hbs7JxxPfQOeMvz4LTl2X89xgoheBggu7Zsh2rKzn5kZcB9Fr4Z_3J3S_U3bzK_qGUp9SfGA4QASbUyfVxIm4LXBCKDSQLeMlse-ucB-pYH7ve-500fFQ6fI0srl-wuH5NDu-7NjmNmhtvq2yvlFXum7FtB8rhylTrHIFAtqyg5h68ThJtwLsRFD4dwbENyky1JKcMA"/>
+                                YouTube
+                            </button>
+<button class="whitespace-nowrap px-4 py-2 rounded-full border border-slate-800 bg-slate-900/50 text-slate-400 text-xs font-bold uppercase tracking-wider hover:border-slate-600 transition-colors">X (Twitter)</button>
+<button class="whitespace-nowrap px-4 py-2 rounded-full border border-slate-800 bg-slate-900/50 text-slate-400 text-xs font-bold uppercase tracking-wider hover:border-slate-600 transition-colors">Discord</button>
+</div>
+</div>
+</div>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+<!-- Service Card 1: TikTok -->
+<div class="glass-card rounded-2xl p-6 flex flex-col honey-glow transition-all group">
+<div class="flex justify-between items-start mb-6">
+<div class="w-12 h-12 bg-[#00f2ea]/10 rounded-xl flex items-center justify-center border border-[#00f2ea]/20">
+<span class="material-symbols-outlined text-[#00f2ea]" style="font-variation-settings: 'FILL' 1;">bolt</span>
+</div>
+<span class="bg-primary/10 text-primary px-3 py-1 rounded-full font-data-mono text-xs border border-primary/20">ID: 842</span>
+</div>
+<div class="mb-6 flex-1">
+<h3 class="font-headline-md text-white mb-2">TikTok High-Ret Views</h3>
+<p class="text-xs text-slate-500 leading-relaxed">Elite retention views with dynamic algorithmic triggering. Global HQ delivery profile.</p>
+</div>
+<div class="grid grid-cols-2 gap-4 mb-6">
+<div class="bg-slate-950/50 p-3 rounded-xl border border-slate-800">
+<p class="text-[10px] text-slate-500 uppercase tracking-widest mb-1">Price per 1k</p>
+<p class="font-data-mono text-amber-500">$0.12</p>
+</div>
+<div class="bg-slate-950/50 p-3 rounded-xl border border-slate-800">
+<p class="text-[10px] text-slate-500 uppercase tracking-widest mb-1">Limit</p>
+<p class="font-data-mono text-slate-300">10M</p>
+</div>
+</div>
+<div class="flex items-center justify-between mb-6 text-[10px] font-label-caps text-slate-500">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-xs text-green-500">check_circle</span> Instant Start</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-xs text-green-500">check_circle</span> 30D Refill</span>
+</div>
+<button class="w-full bg-slate-900 border border-slate-700 text-white py-3 rounded-xl font-bold uppercase tracking-widest text-[11px] group-hover:bg-amber-500 group-hover:text-on-primary-container group-hover:border-amber-500 transition-all duration-300">Order Now</button>
+</div>
+<!-- Service Card 2: Instagram -->
+<div class="glass-card rounded-2xl p-6 flex flex-col honey-glow transition-all group">
+<div class="flex justify-between items-start mb-6">
+<div class="w-12 h-12 bg-[#ff0050]/10 rounded-xl flex items-center justify-center border border-[#ff0050]/20">
+<span class="material-symbols-outlined text-[#ff0050]" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</div>
+<span class="bg-primary/10 text-primary px-3 py-1 rounded-full font-data-mono text-xs border border-primary/20">ID: 219</span>
+</div>
+<div class="mb-6 flex-1">
+<h3 class="font-headline-md text-white mb-2">IG Premium Real Likes</h3>
+<p class="text-xs text-slate-500 leading-relaxed">Accounts with bio, profile picture, and recent activity. Zero drop guarantee.</p>
+</div>
+<div class="grid grid-cols-2 gap-4 mb-6">
+<div class="bg-slate-950/50 p-3 rounded-xl border border-slate-800">
+<p class="text-[10px] text-slate-500 uppercase tracking-widest mb-1">Price per 1k</p>
+<p class="font-data-mono text-amber-500">$2.45</p>
+</div>
+<div class="bg-slate-950/50 p-3 rounded-xl border border-slate-800">
+<p class="text-[10px] text-slate-500 uppercase tracking-widest mb-1">Limit</p>
+<p class="font-data-mono text-slate-300">50K</p>
+</div>
+</div>
+<div class="flex items-center justify-between mb-6 text-[10px] font-label-caps text-slate-500">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-xs text-green-500">check_circle</span> 15m Start</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-xs text-green-500">check_circle</span> Lifetime</span>
+</div>
+<button class="w-full bg-slate-900 border border-slate-700 text-white py-3 rounded-xl font-bold uppercase tracking-widest text-[11px] group-hover:bg-amber-500 group-hover:text-on-primary-container group-hover:border-amber-500 transition-all duration-300">Order Now</button>
+</div>
+<!-- Service Card 3: YouTube -->
+<div class="glass-card rounded-2xl p-6 flex flex-col honey-glow transition-all group">
+<div class="flex justify-between items-start mb-6">
+<div class="w-12 h-12 bg-[#ff0000]/10 rounded-xl flex items-center justify-center border border-[#ff0000]/20">
+<span class="material-symbols-outlined text-[#ff0000]" style="font-variation-settings: 'FILL' 1;">play_circle</span>
+</div>
+<span class="bg-primary/10 text-primary px-3 py-1 rounded-full font-data-mono text-xs border border-primary/20">ID: 554</span>
+</div>
+<div class="mb-6 flex-1">
+<h3 class="font-headline-md text-white mb-2">YT Non-Drop Watchtime</h3>
+<p class="text-xs text-slate-500 leading-relaxed">Monetization-safe watch hours from residential IPs. Gradual delivery speed.</p>
+</div>
+<div class="grid grid-cols-2 gap-4 mb-6">
+<div class="bg-slate-950/50 p-3 rounded-xl border border-slate-800">
+<p class="text-[10px] text-slate-500 uppercase tracking-widest mb-1">Price per 1k</p>
+<p class="font-data-mono text-amber-500">$18.90</p>
+</div>
+<div class="bg-slate-950/50 p-3 rounded-xl border border-slate-800">
+<p class="text-[10px] text-slate-500 uppercase tracking-widest mb-1">Limit</p>
+<p class="font-data-mono text-slate-300">4K</p>
+</div>
+</div>
+<div class="flex items-center justify-between mb-6 text-[10px] font-label-caps text-slate-500">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-xs text-amber-500">schedule</span> 12h Start</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-xs text-green-500">check_circle</span> Real IPs</span>
+</div>
+<button class="w-full bg-slate-900 border border-slate-700 text-white py-3 rounded-xl font-bold uppercase tracking-widest text-[11px] group-hover:bg-amber-500 group-hover:text-on-primary-container group-hover:border-amber-500 transition-all duration-300">Order Now</button>
+</div>
+<!-- Service Card 4: Discord -->
+<div class="glass-card rounded-2xl p-6 flex flex-col honey-glow transition-all group">
+<div class="flex justify-between items-start mb-6">
+<div class="w-12 h-12 bg-[#5865F2]/10 rounded-xl flex items-center justify-center border border-[#5865F2]/20">
+<span class="material-symbols-outlined text-[#5865F2]" style="font-variation-settings: 'FILL' 1;">groups</span>
+</div>
+<span class="bg-primary/10 text-primary px-3 py-1 rounded-full font-data-mono text-xs border border-primary/20">ID: 991</span>
+</div>
+<div class="mb-6 flex-1">
+<h3 class="font-headline-md text-white mb-2">Discord Online Members</h3>
+<p class="text-xs text-slate-500 leading-relaxed">High-quality online members with realistic presence indicators. Custom tokens.</p>
+</div>
+<div class="grid grid-cols-2 gap-4 mb-6">
+<div class="bg-slate-950/50 p-3 rounded-xl border border-slate-800">
+<p class="text-[10px] text-slate-500 uppercase tracking-widest mb-1">Price per 1k</p>
+<p class="font-data-mono text-amber-500">$9.00</p>
+</div>
+<div class="bg-slate-950/50 p-3 rounded-xl border border-slate-800">
+<p class="text-[10px] text-slate-500 uppercase tracking-widest mb-1">Limit</p>
+<p class="font-data-mono text-slate-300">2.5K</p>
+</div>
+</div>
+<div class="flex items-center justify-between mb-6 text-[10px] font-label-caps text-slate-500">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-xs text-green-500">check_circle</span> Instant</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-xs text-amber-500">report</span> 7D Refill</span>
+</div>
+<button class="w-full bg-slate-900 border border-slate-700 text-white py-3 rounded-xl font-bold uppercase tracking-widest text-[11px] group-hover:bg-amber-500 group-hover:text-on-primary-container group-hover:border-amber-500 transition-all duration-300">Order Now</button>
+</div>
+<!-- Repeat for more services -->
+<div class="glass-card rounded-2xl p-6 flex flex-col honey-glow transition-all group opacity-75">
+<div class="flex justify-between items-start mb-6">
+<div class="w-12 h-12 bg-amber-500/10 rounded-xl flex items-center justify-center border border-amber-500/20">
+<span class="material-symbols-outlined text-amber-500">verified</span>
+</div>
+<span class="bg-primary/10 text-primary px-3 py-1 rounded-full font-data-mono text-xs border border-primary/20">ID: 104</span>
+</div>
+<div class="mb-6 flex-1">
+<h3 class="font-headline-md text-white mb-2">Twitter Profile Clicks</h3>
+<p class="text-xs text-slate-500 leading-relaxed">Boost ranking with organic profile interactions from tier-1 countries.</p>
+</div>
+<div class="grid grid-cols-2 gap-4 mb-6">
+<div class="bg-slate-950/50 p-3 rounded-xl border border-slate-800">
+<p class="text-[10px] text-slate-500 uppercase tracking-widest mb-1">Price per 1k</p>
+<p class="font-data-mono text-amber-500">$1.15</p>
+</div>
+<div class="bg-slate-950/50 p-3 rounded-xl border border-slate-800">
+<p class="text-[10px] text-slate-500 uppercase tracking-widest mb-1">Limit</p>
+<p class="font-data-mono text-slate-300">250K</p>
+</div>
+</div>
+<button class="w-full bg-slate-900 border border-slate-700 text-white py-3 rounded-xl font-bold uppercase tracking-widest text-[11px] group-hover:bg-amber-500 group-hover:text-on-primary-container group-hover:border-amber-500 transition-all duration-300">Order Now</button>
+</div>
+<div class="glass-card rounded-2xl p-6 flex flex-col honey-glow transition-all group opacity-75">
+<div class="flex justify-between items-start mb-6">
+<div class="w-12 h-12 bg-amber-500/10 rounded-xl flex items-center justify-center border border-amber-500/20">
+<span class="material-symbols-outlined text-amber-500">chat</span>
+</div>
+<span class="bg-primary/10 text-primary px-3 py-1 rounded-full font-data-mono text-xs border border-primary/20">ID: 882</span>
+</div>
+<div class="mb-6 flex-1">
+<h3 class="font-headline-md text-white mb-2">Custom NFT Comments</h3>
+<p class="text-xs text-slate-500 leading-relaxed">Tailored engagement for crypto projects. You provide the text script.</p>
+</div>
+<div class="grid grid-cols-2 gap-4 mb-6">
+<div class="bg-slate-950/50 p-3 rounded-xl border border-slate-800">
+<p class="text-[10px] text-slate-500 uppercase tracking-widest mb-1">Price per 1k</p>
+<p class="font-data-mono text-amber-500">$32.00</p>
+</div>
+<div class="bg-slate-950/50 p-3 rounded-xl border border-slate-800">
+<p class="text-[10px] text-slate-500 uppercase tracking-widest mb-1">Limit</p>
+<p class="font-data-mono text-slate-300">10K</p>
+</div>
+</div>
+<button class="w-full bg-slate-900 border border-slate-700 text-white py-3 rounded-xl font-bold uppercase tracking-widest text-[11px] group-hover:bg-amber-500 group-hover:text-on-primary-container group-hover:border-amber-500 transition-all duration-300">Order Now</button>
+</div>
+<!-- CTA Promo Card -->
+<div class="lg:col-span-2 bg-gradient-to-br from-amber-500 to-amber-600 rounded-2xl p-8 relative overflow-hidden group">
+<div class="relative z-10 h-full flex flex-col justify-center">
+<span class="text-on-primary-container font-label-caps tracking-widest mb-2">Limited Access Offer</span>
+<h2 class="text-4xl font-bold text-on-primary-container mb-4 tracking-tight">API Command Center</h2>
+<p class="text-on-primary-container/80 max-w-md mb-8">Automate your entire resale operation with our lightning-fast API. Connect your panel in seconds and enjoy exclusive bulk rates.</p>
+<div class="flex gap-4">
+<button class="bg-slate-950 text-amber-500 px-6 py-3 rounded-xl font-bold text-sm hover:bg-slate-900 transition-all">Get API Key</button>
+<button class="border border-on-primary-container/30 text-on-primary-container px-6 py-3 rounded-xl font-bold text-sm hover:bg-on-primary-container/10 transition-all">Read Docs</button>
+</div>
+</div>
+<span class="material-symbols-outlined absolute -right-10 -bottom-10 text-[240px] text-on-primary-container/10 rotate-12 group-hover:rotate-45 transition-transform duration-700 pointer-events-none">hub</span>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- BottomNavBar Component (Mobile Only) -->
+<nav class="md:hidden bg-slate-950/95 backdrop-blur-lg text-amber-500 text-[10px] font-bold uppercase tracking-tighter fixed bottom-0 w-full z-[60] rounded-t-2xl border-t border-slate-800 shadow-[0_-5px_20px_rgba(0,0,0,0.8)] flex justify-around items-center px-4 py-3 tap-highlight-transparent">
+<a class="flex flex-col items-center justify-center text-slate-500 active:bg-slate-800" href="#">
+<span class="material-symbols-outlined text-2xl mb-1">home</span>
+<span>Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-amber-500 bg-amber-500/5 rounded-xl py-1" href="#">
+<span class="material-symbols-outlined text-2xl mb-1">grid_view</span>
+<span>Services</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-500 active:bg-slate-800" href="#">
+<span class="material-symbols-outlined text-2xl mb-1">receipt_long</span>
+<span>Orders</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-500 active:bg-slate-800" href="#">
+<span class="material-symbols-outlined text-2xl mb-1">wallet</span>
+<span>Wallet</span>
+</a>
+</nav>
+<!-- Footer Component -->
+<footer class="bg-slate-950 w-full py-8 mt-auto border-t border-slate-900 text-xs font-light tracking-wide text-slate-500">
+<div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center px-8 gap-6">
+<div class="flex flex-col items-center md:items-start gap-2">
+<span class="text-amber-500/50 font-semibold text-sm">Boost Hive Elite SMM</span>
+<p>© 2024 Boost Hive Elite SMM. All rights reserved.</p>
+</div>
+<div class="flex gap-6">
+<a class="text-slate-600 hover:text-amber-400 transition-colors" href="#">Terms of Service</a>
+<a class="text-slate-600 hover:text-amber-400 transition-colors" href="#">Privacy Policy</a>
+<a class="text-slate-600 hover:text-amber-400 transition-colors" href="#">Refunds</a>
+<a class="text-slate-600 hover:text-amber-400 transition-colors" href="#">API Documentation</a>
+</div>
+</div>
+</footer>
+</body></html>

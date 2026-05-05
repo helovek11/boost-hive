@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(22, 27, 34, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid #262C35;
+        }
+        .honey-glow {
+            box-shadow: 0 0 15px rgba(255, 177, 0, 0.1);
+        }
+        .hive-pattern {
+            background-image: radial-gradient(circle at 2px 2px, rgba(255, 177, 0, 0.05) 1px, transparent 0);
+            background-size: 24px 24px;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-primary": "#7f5600",
+                        "primary-fixed-dim": "#ffba3f",
+                        "on-secondary": "#3c2f00",
+                        "surface-bright": "#343941",
+                        "on-secondary-fixed": "#241a00",
+                        "secondary-fixed": "#ffe088",
+                        "on-primary-fixed": "#281800",
+                        "on-error-container": "#ffdad6",
+                        "on-tertiary": "#2e3037",
+                        "tertiary-fixed-dim": "#c4c6cf",
+                        "surface-container-low": "#171c23",
+                        "on-surface": "#dee2ec",
+                        "on-primary-container": "#6a4700",
+                        "tertiary-fixed": "#e1e2eb",
+                        "surface-container": "#1b2027",
+                        "primary": "#ffd698",
+                        "on-background": "#dee2ec",
+                        "on-tertiary-fixed-variant": "#44474e",
+                        "on-primary-fixed-variant": "#604100",
+                        "outline-variant": "#514533",
+                        "error": "#ffb4ab",
+                        "surface": "#0f141b",
+                        "background": "#0f141b",
+                        "outline": "#9f8e78",
+                        "inverse-surface": "#dee2ec",
+                        "surface-variant": "#30353d",
+                        "secondary-container": "#af8d11",
+                        "on-secondary-fixed-variant": "#574500",
+                        "primary-container": "#ffb100",
+                        "on-error": "#690005",
+                        "secondary-fixed-dim": "#e9c349",
+                        "on-secondary-container": "#342800",
+                        "on-tertiary-container": "#4c4e56",
+                        "tertiary-container": "#bec0c9",
+                        "tertiary": "#dadce5",
+                        "primary-fixed": "#ffdeae",
+                        "surface-container-high": "#252a32",
+                        "inverse-on-surface": "#2c3138",
+                        "on-primary": "#432c00",
+                        "surface-tint": "#ffba3f",
+                        "surface-dim": "#0f141b",
+                        "error-container": "#93000a",
+                        "on-surface-variant": "#d6c4ac",
+                        "on-tertiary-fixed": "#191c22",
+                        "surface-container-highest": "#30353d",
+                        "secondary": "#e9c349",
+                        "surface-container-lowest": "#090f15"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "component-gap": "16px",
+                        "stack-md": "12px",
+                        "stack-lg": "24px",
+                        "container-padding": "32px",
+                        "gutter": "24px",
+                        "unit": "8px",
+                        "stack-sm": "4px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Inter"],
+                        "body-base": ["Inter"],
+                        "label-caps": ["JetBrains Mono"],
+                        "data-mono": ["JetBrains Mono"],
+                        "headline-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-base": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "label-caps": ["11px", {"lineHeight": "1", "letterSpacing": "0.1em", "fontWeight": "700"}],
+                        "data-mono": ["14px", {"lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "headline-md": ["24px", {"lineHeight": "1.2", "fontWeight": "600"}]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background font-body-base text-on-background min-h-screen pb-24">
+<!-- TopNavBar for Mobile -->
+<header class="bg-slate-950/80 backdrop-blur-md border-b border-slate-800/50 shadow-[0_0_15px_rgba(255,177,0,0.05)] sticky top-0 z-50 flex justify-between items-center w-full px-6 py-3">
+<div class="text-xl font-bold tracking-tighter text-amber-500 italic">Boost Hive</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-slate-400" data-icon="notifications">notifications</span>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-primary-container">
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="A sophisticated close-up of a digital avatar profile picture, rendered in a high-tech midnight honey style. The image features glowing amber circuit lines tracing across a sleek, obsidian-colored helmet or facial interface. Soft, golden backlighting creates a halo effect, while a deep matte black background maintains a sense of elite privacy and advanced technological command." src="https://lh3.googleusercontent.com/aida/ADBb0uivY-LdkYivpV00B432ZYc9lCQEpXI8HqNrG-HgaOKg-B7ebmhslkPWayraV3CNJ7oI9iTWC4_Z7BbhkSpM2sGCXZHbXXk10VL8j4W8V64rViiQ6hckjCRm-bkVinmYhb_NRzD11Uf7f0gQ5nW_0tVNMUAYcqa72Y9-BBfQXIvPPdRh1l83OsZthZe-wTmDQmi8XqQIvrtC3RGI98wYCNjxE9NZGLXbtugiwF0rSp72NHs3wMq7eW3AFARt"/>
+</div>
+</div>
+</header>
+<main class="px-4 pt-6 space-y-6 hive-pattern">
+<!-- Balance Section -->
+<section class="glass-card rounded-xl p-6 relative overflow-hidden">
+<div class="absolute top-0 right-0 w-32 h-32 bg-primary-container/10 blur-3xl -mr-16 -mt-16"></div>
+<div class="flex flex-col gap-1">
+<span class="font-label-caps text-label-caps text-slate-500">AVAILABLE BALANCE</span>
+<div class="flex items-center gap-2">
+<span class="font-display-lg text-[32px] font-bold text-primary">$1,240.50</span>
+<span class="material-symbols-outlined text-primary-container" data-icon="account_balance_wallet" style="font-variation-settings: 'FILL' 1;">account_balance_wallet</span>
+</div>
+</div>
+<div class="mt-6 flex gap-3">
+<button class="flex-1 bg-primary-container text-on-primary font-label-caps text-label-caps py-3 rounded-lg flex items-center justify-center gap-2 active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-sm" data-icon="add">add</span>
+                    ADD FUNDS
+                </button>
+<button class="flex-1 glass-card text-primary font-label-caps text-label-caps py-3 rounded-lg border border-primary/20 flex items-center justify-center gap-2 active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-sm" data-icon="history">history</span>
+                    HISTORY
+                </button>
+</div>
+</section>
+<!-- Stats Grid (Bento Style Mobile) -->
+<div class="grid grid-cols-2 gap-4">
+<div class="glass-card rounded-xl p-4 flex flex-col gap-2">
+<div class="flex justify-between items-start">
+<span class="material-symbols-outlined text-primary-container" data-icon="shopping_cart">shopping_cart</span>
+<span class="text-xs font-label-caps text-green-500">+12%</span>
+</div>
+<div class="mt-2">
+<div class="font-display-lg text-2xl font-bold text-on-surface">14</div>
+<div class="font-label-caps text-[10px] text-slate-500 uppercase">Active Orders</div>
+</div>
+</div>
+<div class="glass-card rounded-xl p-4 flex flex-col gap-2">
+<div class="flex justify-between items-start">
+<span class="material-symbols-outlined text-primary-container" data-icon="bolt">bolt</span>
+<span class="text-xs font-label-caps text-amber-500">Live</span>
+</div>
+<div class="mt-2">
+<div class="font-display-lg text-2xl font-bold text-on-surface">98.2%</div>
+<div class="font-label-caps text-[10px] text-slate-500 uppercase">Success Rate</div>
+</div>
+</div>
+</div>
+<!-- Order List Section -->
+<section class="space-y-4">
+<div class="flex justify-between items-center px-1">
+<h2 class="font-headline-md text-lg text-primary">Recent Orders</h2>
+<a class="font-label-caps text-[10px] text-slate-500 hover:text-primary transition-colors" href="#">VIEW ALL</a>
+</div>
+<!-- Order Cards -->
+<div class="space-y-3">
+<div class="glass-card rounded-xl p-4 flex items-center justify-between border-l-2 border-l-primary-container">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-lg bg-slate-900 flex items-center justify-center border border-slate-800">
+<span class="material-symbols-outlined text-primary" data-icon="trending_up">trending_up</span>
+</div>
+<div>
+<div class="font-body-base text-sm font-semibold">IG Premium Likes</div>
+<div class="font-data-mono text-xs text-slate-500">#BH-9402 • Pending</div>
+</div>
+</div>
+<div class="text-right">
+<div class="font-data-mono text-sm text-primary">$12.40</div>
+<div class="font-label-caps text-[10px] text-slate-600">2 min ago</div>
+</div>
+</div>
+<div class="glass-card rounded-xl p-4 flex items-center justify-between border-l-2 border-l-blue-500/50">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-lg bg-slate-900 flex items-center justify-center border border-slate-800">
+<span class="material-symbols-outlined text-blue-400" data-icon="group">group</span>
+</div>
+<div>
+<div class="font-body-base text-sm font-semibold">YT Real Views</div>
+<div class="font-data-mono text-xs text-slate-500">#BH-9388 • Processing</div>
+</div>
+</div>
+<div class="text-right">
+<div class="font-data-mono text-sm text-primary">$45.00</div>
+<div class="font-label-caps text-[10px] text-slate-600">15 min ago</div>
+</div>
+</div>
+<div class="glass-card rounded-xl p-4 flex items-center justify-between border-l-2 border-l-green-500/50">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-lg bg-slate-900 flex items-center justify-center border border-slate-800">
+<span class="material-symbols-outlined text-green-400" data-icon="check_circle">check_circle</span>
+</div>
+<div>
+<div class="font-body-base text-sm font-semibold">X Global Retweets</div>
+<div class="font-data-mono text-xs text-slate-500">#BH-9380 • Completed</div>
+</div>
+</div>
+<div class="text-right">
+<div class="font-data-mono text-sm text-primary">$8.20</div>
+<div class="font-label-caps text-[10px] text-slate-600">1 hour ago</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Promotion / Quick Action -->
+<section class="glass-card rounded-2xl p-6 bg-gradient-to-br from-slate-900 to-slate-950 border-primary-container/20">
+<div class="flex gap-4 items-center">
+<div class="flex-1 space-y-2">
+<h3 class="font-headline-md text-base text-on-surface">Hive API Access</h3>
+<p class="font-body-base text-xs text-slate-400">Automate your social growth with our high-speed elite API.</p>
+<button class="text-primary font-label-caps text-xs border-b border-primary/40 pb-1 mt-2">GET KEY</button>
+</div>
+<div class="w-20 h-20 flex items-center justify-center relative">
+<!-- Hive Hexagon Indicator -->
+<svg class="w-full h-full transform -rotate-90">
+<circle class="text-slate-800" cx="40" cy="40" fill="transparent" r="32" stroke="currentColor" stroke-width="4"></circle>
+<circle class="text-primary-container" cx="40" cy="40" fill="transparent" r="32" stroke="currentColor" stroke-dasharray="201" stroke-dashoffset="60" stroke-width="4"></circle>
+</svg>
+<span class="absolute inset-0 flex items-center justify-center font-data-mono text-sm text-primary">72%</span>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar (The Anchor) -->
+<nav class="fixed bottom-0 w-full z-[60] rounded-t-2xl bg-slate-950/95 backdrop-blur-lg border-t border-slate-800 shadow-[0_-5px_20px_rgba(0,0,0,0.8)] flex justify-around items-center px-4 py-3 tap-highlight-transparent">
+<!-- Home (Active) -->
+<a class="flex flex-col items-center justify-center text-amber-500 bg-amber-500/5 rounded-xl py-1 px-3" href="#">
+<span class="material-symbols-outlined" data-icon="home" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter mt-1">Home</span>
+</a>
+<!-- Services -->
+<a class="flex flex-col items-center justify-center text-slate-500 active:bg-slate-800 px-3 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="grid_view">grid_view</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter mt-1">Services</span>
+</a>
+<!-- Orders -->
+<a class="flex flex-col items-center justify-center text-slate-500 active:bg-slate-800 px-3 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="receipt_long">receipt_long</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter mt-1">Orders</span>
+</a>
+<!-- Wallet -->
+<a class="flex flex-col items-center justify-center text-slate-500 active:bg-slate-800 px-3 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="wallet">wallet</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter mt-1">Wallet</span>
+</a>
+</nav>
+<!-- FAB for Main Action -->
+<div class="fixed bottom-24 right-6 z-[55]">
+<button class="w-14 h-14 bg-primary-container text-on-primary rounded-2xl shadow-lg shadow-primary-container/20 flex items-center justify-center active:scale-90 transition-all border border-primary/50">
+<span class="material-symbols-outlined text-3xl" data-icon="add_shopping_cart">add_shopping_cart</span>
+</button>
+</div>
+</body></html>
