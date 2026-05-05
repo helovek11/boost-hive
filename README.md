@@ -1,20 +1,72 @@
 <div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
+<img width="1200" height="475" alt="Boost Hive" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
 </div>
 
-# Run and deploy your AI Studio app
+# Boost Hive 💰
 
-This contains everything you need to run your app locally.
+Сервис для заказа услуг продвижения в социальных сетях (Instagram, TikTok, YouTube, Telegram и др.).
 
-View your app in AI Studio: https://ai.studio/apps/c03f69f2-ad3a-4ef9-b45f-e71bb91440a6
+## Возможности
 
-## Run Locally
+- 📊 Каталог услуг с ценами в рублях
+- 💳 Пополнение баланса (Банковские карты, Криптовалюта, YooMoney)
+- 📈 Отслеживание заказов
+- 🌐 Мультиязычность (EN, RU, ES)
+- 🌙 Тёмная тема
 
-**Prerequisites:**  Node.js
+## Технологии
 
+- **Frontend:** React + TypeScript + Vite
+- **Backend:** Express + Prisma
+- **База данных:** SQLite (dev) / PostgreSQL (prod)
+- **Стили:** TailwindCSS
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+## Быстрый старт
+
+### Установка
+
+```bash
+# Клонирование
+git clone https://github.com/helovek11/boost-hive.git
+cd boost-hive
+
+# Установка зависимостей
+npm install
+```
+
+### Настройка
+
+Создай файл `.env`:
+
+```env
+NODE_ENV=development
+PORT=3000
+JWT_SECRET=твой_секретный_ключ
+HIVE_DATABASE_URL=file:./prisma/dev.db
+PROFI_LIKE_API_KEY=твой_api_ключ
+PROFI_LIKE_API_URL=https://api.profi-like.ru/v1
+PROFI_LIKE_MARKUP_PERCENT=10
+```
+
+### Запуск
+
+```bash
+# Режим разработки
+npm run dev
+
+# Продакшен
+npm run build
+npm start
+```
+
+## Развёртывание
+
+Подробная инструкция: [DEPLOY_GUIDE.md](DEPLOY_GUIDE.md)
+
+## Безопасность
+
+Рекомендации: [SECURITY_PLAN.md](SECURITY_PLAN.md)
+
+## Лицензия
+
+MIT
