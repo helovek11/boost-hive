@@ -26,7 +26,6 @@ const History: React.FC = () => {
         const data = await getOrders();
         setOrders(Array.isArray(data) ? data : []);
       } catch (error) {
-        console.error('Failed to fetch orders', error);
         setOrders([]);
       } finally {
         setIsLoading(false);

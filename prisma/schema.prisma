@@ -74,6 +74,22 @@ model Order {
   @@index([status])
 }
 
+model Provider {
+  id              String    @id @default(cuid())
+  name            String
+  apiUrl          String
+  apiKey          String
+  isActive        Boolean   @default(true)
+  priority        Int       @default(0)
+  balance         Float     @default(0)
+  minBalanceAlert Float     @default(500)
+  balanceCurrency String    @default("RUB")
+  topUpUrl        String?
+  lastChecked     DateTime?
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+}
+
 model TerminalMessage {
   id        String   @id @default(cuid())
   timestamp DateTime @default(now())

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { Service, Order } from '../types';
+import { Order } from '../types';
 
 const api = axios.create({
   baseURL: '/api',
@@ -8,8 +8,35 @@ const api = axios.create({
   },
 });
 
-export const getServices = async (): Promise<Service[]> => {
-  const response = await api.get('/services?limit=500');
+export interface Service {
+  id: string;
+  name: string;
+  nameOriginal: string;
+  description: string;
+  category: string;
+  serviceType?: string;
+  pricePer1k: number;
+  minOrder: number;
+  maxOrder: number;
+  speedLabel: string;
+  priceTier: 'premium' | 'standard' | 'budget';
+  group?: string;
+  providerServiceId: string;
+}
+
+interface ServicesResponse {
+  data: Service[];
+  tiers: { speed: string[]; price: string[] };
+  pagination: { page: number; limit: number; total: number; pages: number };
+}
+
+export const getServices = async (params?: { page?: number; limit?: number }): Promise<ServicesResponse> => {
+  const response = await api.get('/services', { params: { limit: 1000, ...params } });
+  return response.data;
+};
+
+export const getTiers = async (): Promise<{ speed: string[]; price: string[] }> => {
+  const response = await api.get('/tiers');
   return response.data;
 };
 

@@ -1,4 +1,5 @@
 import React from 'react';
+import { useOutletContext } from 'react-router-dom';
 import { motion } from 'motion/react';
 import { 
   User, 
@@ -18,11 +19,8 @@ import {
 } from 'lucide-react';
 import { User as UserType } from '../types';
 
-interface ProfileProps {
-  user: UserType | null;
-}
-
-const Profile: React.FC<ProfileProps> = ({ user }) => {
+const Profile: React.FC = () => {
+  const { user } = useOutletContext<{ user: UserType | null }>();
   return (
     <div className="space-y-10 pb-20">
       <div>

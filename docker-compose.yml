@@ -31,30 +31,6 @@ services:
       timeout: 5s
       retries: 5
 
-  backend:
-    image: boost-hive-backend:latest
-    build:
-      context: ./backend
-      dockerfile: Dockerfile
-    environment:
-      DATABASE_URL: "postgresql://postgres:${POSTGRES_PASSWORD:-change_me_in_production}@postgres:5432/boost_hive"
-      REDIS_URL: "redis://:${REDIS_PASSWORD:-change_me_in_production}@redis:6379"
-      PORT: 3000
-      NODE_ENV: production
-      PROFI_LIKE_API_URL: "https://api.profi-like.ru/v1"
-      PROFI_LIKE_API_KEY: "${PROFI_LIKE_API_KEY}"
-      PROFI_LIKE_MARKUP_PERCENT: "10"
-      JWT_SECRET: "${JWT_SECRET}"
-      ALLOWED_ORIGINS: "${ALLOWED_ORIGINS}"
-    depends_on:
-      postgres:
-        condition: service_healthy
-      redis:
-        condition: service_healthy
-    ports:
-      - "3000:3000"
-    restart: unless-stopped
-
 volumes:
   postgres_data:
   redis_data:

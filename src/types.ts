@@ -1,26 +1,27 @@
-
-export type Page = 'dashboard' | 'catalog' | 'campaigns' | 'payments' | 'history' | 'profile';
+export type Page = 'dashboard' | 'catalog' | 'campaigns' | 'payments' | 'orders' | 'history' | 'profile' | 'admin';
 
 export interface User {
   id: string;
   email: string;
   name?: string;
   role: string;
+  balance?: number;
 }
 
 export interface Service {
   id: string;
   name: string;
-  category: 'TikTok' | 'Instagram' | 'YouTube' | 'X' | 'Twitch' | 'LinkedIn' | 'Other';
+  nameOriginal: string;
   description: string;
+  category: string;
+  serviceType?: string;
   pricePer1k: number;
   minOrder: number;
   maxOrder: number;
-  speed: string;
-  retention: string;
-  quality: string;
-  icon?: string;
-  badge?: string;
+  speedLabel: string;
+  priceTier: 'premium' | 'standard' | 'budget';
+  group?: string;
+  providerServiceId: string;
 }
 
 export interface Order {

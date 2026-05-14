@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { motion } from 'motion/react';
 import { 
   Zap, 
@@ -11,14 +12,13 @@ import {
   AlertTriangle,
   TrendingUp
 } from 'lucide-react';
+import { useI18n, translations } from '../lib/i18n';
 import { login, register } from '../lib/api';
-import { User } from '../types';
 
-interface LoginProps {
-  onLogin: (user: User) => void;
-}
-
-const Login: React.FC<LoginProps> = ({ onLogin }) => {
+const Login: React.FC = () => {
+  const navigate = useNavigate();
+  const { language } = useI18n();
+  const t = translations[language];
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
@@ -32,17 +32,14 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
     setError(null);
     
     try {
-      let userData: User;
       if (isRegister) {
-        const response = await register(email, password, name || undefined);
-        userData = response.user;
+        await register(email, password, name || undefined);
       } else {
-        const response = await login(email, password);
-        userData = response.user;
+        await login(email, password);
       }
-      onLogin(userData);
+      navigate('/dashboard');
     } catch (err: any) {
-      setError(err.response?.data?.error || (isRegister ? 'Registration Failed' : 'Access Denied: Terminal Sync Failed'));
+      setError(err.response?.data?.error || (isRegister ? 'Ошибка регистрации' : 'Ошибка входа'));
       setIsConnecting(false);
     }
   };
@@ -54,7 +51,6 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
 
   return (
     <div className="min-h-screen bg-hive-black text-[#dee2ec] font-sans overflow-hidden selection:bg-hive-amber selection:text-hive-black relative flex items-center justify-center p-6 hex-bg">
-      {/* Background Glow */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,177,0,0.08)_0%,transparent_70%)] pointer-events-none" />
 
       <div className="w-full max-w-[1200px] grid lg:grid-cols-2 gap-12 items-center relative z-10">
@@ -73,7 +69,7 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
               <h1 className="font-display font-black text-6xl tracking-tighter italic text-white leading-none">Boost Hive</h1>
             </div>
             <p className="text-white/40 font-display text-2xl max-w-md italic leading-tight">
-              The elite terminal for high-frequency social growth and automated engagement engineering.
+              {t.boostHiveTagline}
             </p>
           </motion.div>
 
@@ -86,7 +82,7 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
             >
               <div className="flex items-center gap-2 mb-2">
                 <TrendingUp size={16} className="text-hive-amber" />
-                <span className="text-[10px] uppercase font-mono text-white/30 tracking-widest leading-none">Operational Uptime</span>
+                <span className="text-[10px] uppercase font-mono text-white/30 tracking-widest leading-none">{t.operationalUptime}</span>
               </div>
               <div className="text-4xl font-display font-black text-white">99.9%</div>
               <div className="mt-4 h-1 w-full bg-white/5 rounded-full overflow-hidden">
@@ -102,10 +98,10 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
             >
               <div className="flex items-center gap-2 mb-2">
                 <Zap size={16} className="text-hive-amber" />
-                <span className="text-[10px] uppercase font-mono text-white/30 tracking-widest leading-none">Tasks Executed</span>
+                <span className="text-[10px] uppercase font-mono text-white/30 tracking-widest leading-none">{t.tasksExecuted}</span>
               </div>
               <div className="text-4xl font-display font-black text-white">12M+</div>
-              <p className="mt-2 text-[10px] font-mono text-white/20 uppercase tracking-tighter">Real-time processing active</p>
+              <p className="mt-2 text-[10px] font-mono text-white/20 uppercase tracking-tighter">{t.realTimeProcessing}</p>
             </motion.div>
           </div>
 
@@ -128,7 +124,7 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
                  ))}
                  <div className="w-10 h-10 rounded-full border-2 border-hive-black bg-hive-amber flex items-center justify-center text-[10px] font-bold text-hive-black">+2k</div>
                </div>
-               <span className="text-[10px] font-mono text-hive-amber uppercase tracking-[0.2em] font-bold">Elite Users Online</span>
+               <span className="text-[10px] font-mono text-hive-amber uppercase tracking-[0.2em] font-bold">{t.eliteUsersOnline}</span>
              </div>
           </motion.div>
         </div>
@@ -147,8 +143,8 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
                 </div>
                 <span className="text-3xl font-black text-white italic tracking-tighter">Boost Hive</span>
               </div>
-              <h2 className="text-4xl font-display font-black text-white mb-3 italic tracking-tight">Enter the Hive</h2>
-              <p className="text-white/40 text-[13px] leading-relaxed">Access the executive dashboard for high-frequency SMM control.</p>
+              <h2 className="text-4xl font-display font-black text-white mb-3 italic tracking-tight">{t.enterTheHive}</h2>
+              <p className="text-white/40 text-[13px] leading-relaxed">{t.accessTerminalDesc}</p>
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-6">
@@ -165,12 +161,12 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
 
               {isRegister && (
                 <div className="space-y-2">
-                  <label className="text-[10px] font-mono text-white/30 uppercase tracking-[0.2em] ml-1">Agent Name</label>
+                  <label className="text-[10px] font-mono text-white/30 uppercase tracking-[0.2em] ml-1">{t.agentName}</label>
                   <div className="relative group">
                     <Fingerprint className="absolute left-4 top-1/2 -translate-y-1/2 text-white/20 group-focus-within:text-hive-amber transition-colors" size={20} />
                     <input 
                       type="text" 
-                      placeholder="Your name" 
+                      placeholder={t.agentName} 
                       className="hive-input w-full pl-12 font-mono text-[13px]"
                       value={name}
                       onChange={(e) => setName(e.target.value)}
@@ -180,12 +176,12 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
               )}
 
               <div className="space-y-2">
-                <label className="text-[10px] font-mono text-white/30 uppercase tracking-[0.2em] ml-1">Identity Identifier</label>
+                <label className="text-[10px] font-mono text-white/30 uppercase tracking-[0.2em] ml-1">{t.identityIdentifier}</label>
                 <div className="relative group">
                   <Fingerprint className="absolute left-4 top-1/2 -translate-y-1/2 text-white/20 group-focus-within:text-hive-amber transition-colors" size={20} />
                   <input 
                     type="email" 
-                    placeholder="agent@boosthive.elite" 
+                    placeholder={t.emailPlaceholder} 
                     className="hive-input w-full pl-12 font-mono text-[13px]"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
@@ -196,8 +192,7 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
 
               <div className="space-y-2">
                 <div className="flex justify-between items-center px-1">
-                  <label className="text-[10px] font-mono text-white/30 uppercase tracking-[0.2em]">Security Protocol Key</label>
-                  <button type="button" className="text-[9px] font-mono text-hive-amber hover:text-hive-gold transition-colors uppercase tracking-[0.1em]">Bypass Req?</button>
+                  <label className="text-[10px] font-mono text-white/30 uppercase tracking-[0.2em]">{t.securityProtocolKey}</label>
                 </div>
                 <div className="relative group">
                   <Key className="absolute left-4 top-1/2 -translate-y-1/2 text-white/20 group-focus-within:text-hive-amber transition-colors" size={20} />
@@ -218,7 +213,7 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
                   id="remember" 
                   className="w-4 h-4 rounded border-white/10 bg-hive-muted text-hive-amber focus:ring-hive-amber focus:ring-offset-hive-black transition-all cursor-pointer" 
                 />
-                <label htmlFor="remember" className="text-[11px] text-white/40 select-none cursor-pointer uppercase tracking-widest font-mono">Keep Session Active</label>
+                <label htmlFor="remember" className="text-[11px] text-white/40 select-none cursor-pointer uppercase tracking-widest font-mono">{t.keepSessionActive}</label>
               </div>
 
               <button 
@@ -229,11 +224,11 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
                 {isConnecting ? (
                   <>
                     <RefreshCw className="animate-spin" size={18} />
-                    <span>{isRegister ? 'Creating Identity...' : 'Synchronizing Core...'}</span>
+                    <span>{isRegister ? t.creatingIdentity : t.synchronizingCore}</span>
                   </>
                 ) : (
                   <>
-                    {isRegister ? 'INITIATE REGISTRATION' : 'INITIATE CONNECTION'}
+                    {isRegister ? t.initiateRegistration : t.initiateConnection}
                     <Lock size={16} className="ml-1" />
                   </>
                 )}
@@ -245,7 +240,7 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
                   onClick={toggleMode}
                   className="text-[11px] font-mono text-white/40 hover:text-hive-amber transition-colors uppercase tracking-widest"
                 >
-                  {isRegister ? '← Back to Login' : 'Create New Identity →'}
+                  {isRegister ? t.backToLogin : t.createNewIdentity}
                 </button>
               </div>
             </form>
@@ -254,11 +249,11 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
               <div className="flex items-center justify-between text-[9px] font-mono text-white/20 uppercase tracking-[0.2em]">
                 <div className="flex items-center gap-2">
                   <div className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
-                  Terminal Online
+                  {t.terminalOnline}
                 </div>
                 <div className="flex gap-4">
-                  <button className="hover:text-hive-amber transition-colors">Privacy</button>
-                  <button className="hover:text-hive-amber transition-colors">Nodes</button>
+                  <button className="hover:text-hive-amber transition-colors">{t.privacy}</button>
+                  <button className="hover:text-hive-amber transition-colors">{t.nodes}</button>
                 </div>
               </div>
             </div>
@@ -275,8 +270,7 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
       
       <div className="fixed bottom-10 right-10 hidden xl:block">
         <div className="flex flex-col gap-2 items-end text-[9px] font-mono text-white/10 uppercase tracking-[0.4em]">
-          <span>Build: Stable v2.4.0</span>
-          <span>Lat: 37.7749 | Lon: -122.4194</span>
+          <span>{t.privacy} Protocol</span>
         </div>
       </div>
     </div>

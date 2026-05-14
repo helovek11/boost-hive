@@ -199,11 +199,112 @@ pm2 status
 
 ---
 
+## Cloudflare Tunnel (без статического IP)
+
+Если у тебя динамический IP (домашний интернет), используй Cloudflare Tunnel — это бесплатно и обходит блокировки.
+
+### Шаг 1: Установка cloudflared
+
+```bash
+# Скачать
+curl -L https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64 -o cloudflared
+
+# Сделать исполняемым
+chmod +x cloudflared
+
+# Переместить в PATH
+sudo mv cloudflared /usr/local/bin/
+```
+
+### Шаг 2: Авторизация
+
+```bash
+cloudflared tunnel login
+```
+
+Откроется браузер — войди в аккаунт Cloudflare и выбери домен `boost-hive.online`.
+
+### Шаг 3: Создание туннеля
+
+```bash
+# Создать туннель
+cloudflared tunnel create boosthive
+
+# Сохрани Tunnel ID (выведет что-то like: a1b2c3d4-...)
+```
+
+### Шаг 4: Настройка DNS
+
+```bash
+# Добавить домен к туннелю
+cloudflared tunnel route dns boosthive boost-hive.online
+```
+
+### Шаг 5: Запуск туннеля
+
+```bash
+# Запуск (замени a1b2c3d4-... на твой Tunnel ID)
+cloudflared tunnel run --url http://localhost:3000 a1b2c3d4-...
+```
+
+Или создай конфиг:
+
+```bash
+mkdir -p ~/.cloudflared
+nano ~/.cloudflared/config.yml
+```
+
+Содержимое:
+```yaml
+tunnel: a1b2c3d4-...
+credentials-file: /home/твой_пользователь/.cloudflared/a1b2c3d4-...json
+
+ingress:
+  - hostname: boost-hive.online
+    service: http://localhost:3000
+  - service: http_status:404
+```
+
+Запуск:
+```bash
+cloudflared tunnel --config ~/.cloudflared/config.yml run
+```
+
+### Шаг 6: Автозапуск
+
+```bash
+# Создать systemd сервис
+sudo nano /etc/systemd/system/cloudflared.service
+```
+
+Содержимое:
+```ini
+[Unit]
+Description=Cloudflare Tunnel
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/cloudflared tunnel --config /home/твой_пользователь/.cloudflared/config.yml run
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
+```
+
+```bash
+# Запуск
+sudo systemctl enable cloudflared
+sudo systemctl start cloudflared
+```
+
+---
+
 ## Для России (особенности)
 
 1. **Банковские карты**: Для приёма платежей в России нужна интеграция с российскими платёжными системами (ЮKassa, Robokassa)
 
-2. **VPN**: Если сервер будет недоступен из-за блокировок, используй Cloudflare Tunnel
+2. **VPN**: Cloudflare Tunnel уже обходит блокировки
 
 3. **Хостинг в России**: Для соответствия законодательству (ФЗ-152) можно использовать российские VPS (Reg.ru, Timeweb, Yandex Cloud)
 
