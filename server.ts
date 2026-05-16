@@ -212,7 +212,7 @@ if (process.env.PROFI_LIKE_API_KEY) {
       return res.data;
     },
     async createOrder(serviceId, link, qty) {
-      const res = await api.get('', { params: { action: 'add', key, service: serviceId, link, quantity: qty } });
+      const res = await api.post('', null, { params: { action: 'add', key, service: serviceId, link, quantity: qty } });
       return res.data;
     },
     async checkOrderStatus(orderId) {
