@@ -1094,10 +1094,25 @@ app.post('/api/orders', authenticateToken, async (req, res) => {
       return res.status(500).json({ error: 'Failed to create order with provider' });
     }
 
-    const orderPrice = parseFloat(providerResponse.price);
+    // Calculate price from service rate (provider may not return price)
+    let orderPrice = parseFloat(providerResponse.price);
     if (isNaN(orderPrice)) {
-      req.log.error({ providerResponse }, 'Provider did not return a valid price');
-      return res.status(502).json({ error: 'Provider returned invalid price' });
+      // Find service rate from cache
+      const cachedEntries = await getCachedServices();
+      for (const ce of cachedEntries) {
+        if (ce.providerId !== providerId) continue;
+        const svc = (ce.data as any[]).find((s: any) => String(s.service) === String(providerServiceId));
+        if (svc) {
+          let rate = parseFloat(svc.rate);
+          if (providerDef.rateIsPerUnit) rate *= 1000;
+          orderPrice = rate * data.quantity;
+          break;
+        }
+      }
+      if (isNaN(orderPrice)) {
+        req.log.error({ providerResponse, providerServiceId }, 'Could not calculate order price');
+        return res.status(502).json({ error: 'Could not calculate order price' });
+      }
     }
 
     let markup = parseFloat(process.env.PROFI_LIKE_MARKUP_PERCENT || '10');
@@ -1343,6 +1358,7 @@ app.patch('/api/admin/providers/:id', authenticateToken, adminOnly, async (req, 
 app.delete('/api/admin/providers/:id', authenticateToken, adminOnly, async (req, res) => {
   try {
     await prisma.provider.delete({ where: { id: req.params.id } });
+    servicesCache = null; // invalidate services cache
     res.json({ success: true });
   } catch (error) {
     req.log.error(error, 'Failed to delete provider');
@@ -1359,6 +1375,7 @@ app.patch('/api/admin/providers/:id/toggle', authenticateToken, adminOnly, async
       where: { id: req.params.id },
       data: { isActive: !provider.isActive },
     });
+    servicesCache = null; // invalidate services cache
     res.json({ id: updated.id, name: updated.name, isActive: updated.isActive });
   } catch (error) {
     req.log.error(error, 'Failed to toggle provider');
