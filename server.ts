@@ -409,15 +409,14 @@ const fetchAllServices = async (): Promise<CachedServicesEntry[]> => {
   // Read active provider IDs from DB
   const dbProviders = await prisma.provider.findMany({ select: { name: true, isActive: true } });
   const activeNames = new Set(dbProviders.filter(p => p.isActive).map(p => p.name.toLowerCase()));
-
   const activeDefs = providerRegistry.filter(p => {
     const name = p.id === 'profi' ? 'profi-like' : (p.id === 'sexy' ? 'sexy-smm' : p.id);
     return activeNames.has(name);
   });
 
   if (activeDefs.length === 0) {
-    logger.warn('No active providers found, using all from registry');
-    activeDefs.push(...providerRegistry);
+    logger.warn('No active providers in DB, returning empty services');
+    return [];
   }
 
   const results = await Promise.allSettled(activeDefs.map(p => fetchSingleProvider(p)));
@@ -1539,10 +1538,11 @@ async function startServer() {
 
 // --- Seed default provider ---
 const seedDefaultProvider = async () => {
-  for (const def of providerRegistry) {
-    const existing = await prisma.provider.findFirst({ where: { apiUrl: { contains: def.id === 'profi' ? 'profi-like' : def.id } } });
-    if (existing) continue;
+  // Only seed if DB has no providers at all (fresh install)
+  const existingAny = await prisma.provider.findFirst();
+  if (existingAny) return;
 
+  for (const def of providerRegistry) {
     await prisma.provider.create({
       data: {
         name: def.id === 'profi' ? 'Profi-like' : 'Sexy-SMM',
